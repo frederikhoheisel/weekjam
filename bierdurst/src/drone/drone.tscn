@@ -1,3 +1,69 @@
 [gd_scene format=3 uid="uid://duti1o6ffrs5t"]
 
+[ext_resource type="PackedScene" uid="uid://dndb7lprikuf4" path="res://assets/models/drone_body.glb" id="1_1akv4"]
+[ext_resource type="PackedScene" uid="uid://naakk2e7etmc" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
+[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
+
+[sub_resource type="Gradient" id="Gradient_naubj"]
+offsets = PackedFloat32Array(0, 0.15625, 0.3784722, 0.6701389)
+colors = PackedColorArray(0.15294118, 0.77254903, 1, 1, 1, 0, 0, 1, 1, 0.38541666, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ysse6"]
+gradient = SubResource("Gradient_naubj")
+
+[sub_resource type="Gradient" id="Gradient_ysse6"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.7294118, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1t3s0"]
+noise_type = 3
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ipbje"]
+noise = SubResource("FastNoiseLite_1t3s0")
+color_ramp = SubResource("Gradient_ysse6")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_naubj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ysse6"]
+noise = SubResource("FastNoiseLite_naubj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t3s0"]
+render_priority = 0
+shader = ExtResource("2_uou57")
+shader_parameter/noise = SubResource("NoiseTexture2D_ipbje")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_ysse6")
+shader_parameter/color = SubResource("GradientTexture1D_ysse6")
+shader_parameter/texture_speed = -4.015
+shader_parameter/wiggle_amount = 0.325
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ajne0"]
+material = SubResource("ShaderMaterial_1t3s0")
+top_radius = 0.2
+bottom_radius = 0.4
+height = 0.3
+radial_segments = 8
+rings = 0
+cap_top = false
+cap_bottom = false
+
 [node name="Drone" type="Node3D" unique_id=1303569735]
+
+[node name="drone_body" parent="." unique_id=1661802652 instance=ExtResource("1_1akv4")]
+
+[node name="Thrust" type="MeshInstance3D" parent="drone_body" unique_id=365861985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30484438, 0)
+mesh = SubResource("CylinderMesh_ajne0")
+
+[node name="DroneThruster" parent="." unique_id=107174386 instance=ExtResource("2_4nai4")]
+transform = Transform3D(1, 0, 0, 0, 0.88294756, 0.46947157, 0, -0.46947157, 0.88294756, 0, -0.26, 0.622)
+
+[node name="DroneThruster2" parent="." unique_id=227745377 instance=ExtResource("2_4nai4")]
+transform = Transform3D(1, 0, 0, 0, 0.8829475, -0.46947154, 0, 0.46947154, 0.8829475, 0, -0.26, -0.622)
+
+[node name="DroneThruster3" parent="." unique_id=419065038 instance=ExtResource("2_4nai4")]
+transform = Transform3D(0.88294756, -0.46947154, 0, 0.46947157, 0.8829475, 0, 0, 0, 0.99999994, 0.622, -0.26, 0)
+
+[node name="DroneThruster4" parent="." unique_id=1920883965 instance=ExtResource("2_4nai4")]
+transform = Transform3D(0.88294756, 0.46947154, 0, -0.46947157, 0.8829475, 0, 0, 0, 0.99999994, -0.622, -0.26, 0)
