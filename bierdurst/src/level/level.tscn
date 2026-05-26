@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ef8forspnxic"]
+
+[ext_resource type="Script" uid="uid://b0oxdtmu7w5ul" path="res://src/level/level.gd" id="1_7lnir"]
+
+[node name="Level" type="Node3D" unique_id=837621672]
+script = ExtResource("1_7lnir")
+lvl_idx = null
+
+[node name="GridMap" type="GridMap" parent="." unique_id=617607331]
