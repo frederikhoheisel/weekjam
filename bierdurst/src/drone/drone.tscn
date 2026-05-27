@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dndb7lprikuf4" path="res://assets/models/drone_body.glb" id="1_1akv4"]
 [ext_resource type="Script" uid="uid://bvjjqg5e0pcvh" path="res://src/drone/drone.gd" id="1_uou57"]
 [ext_resource type="PackedScene" uid="uid://bn1hbnbbuxsfl" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
-[ext_resource type="Shader" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
+[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
 
 [sub_resource type="Gradient" id="Gradient_naubj"]
 offsets = PackedFloat32Array(0, 0.15625, 0.3784722, 0.6701389)
@@ -49,7 +49,7 @@ rings = 0
 cap_top = false
 cap_bottom = false
 
-[node name="Drone" type="Node3D" unique_id=1303569735]
+[node name="Drone" type="Node3D" unique_id=1303569735 groups=["player"]]
 script = ExtResource("1_uou57")
 
 [node name="drone_body" parent="." unique_id=1661802652 instance=ExtResource("1_1akv4")]
