@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://duti1o6ffrs5t"]
 
 [ext_resource type="PackedScene" uid="uid://dndb7lprikuf4" path="res://assets/models/drone_body.glb" id="1_1akv4"]
-[ext_resource type="PackedScene" uid="uid://naakk2e7etmc" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
-[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
+[ext_resource type="Script" uid="uid://bvjjqg5e0pcvh" path="res://src/drone/drone.gd" id="1_uou57"]
+[ext_resource type="PackedScene" uid="uid://bn1hbnbbuxsfl" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
+[ext_resource type="Shader" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
 
 [sub_resource type="Gradient" id="Gradient_naubj"]
 offsets = PackedFloat32Array(0, 0.15625, 0.3784722, 0.6701389)
@@ -49,6 +50,7 @@ cap_top = false
 cap_bottom = false
 
 [node name="Drone" type="Node3D" unique_id=1303569735]
+script = ExtResource("1_uou57")
 
 [node name="drone_body" parent="." unique_id=1661802652 instance=ExtResource("1_1akv4")]
 
@@ -56,14 +58,18 @@ cap_bottom = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30484438, 0)
 mesh = SubResource("CylinderMesh_ajne0")
 
-[node name="DroneThruster" parent="." unique_id=107174386 instance=ExtResource("2_4nai4")]
+[node name="DroneThrusterSouth" parent="." unique_id=107174386 instance=ExtResource("2_4nai4")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.88294756, 0.46947157, 0, -0.46947157, 0.88294756, 0, -0.26, 0.622)
 
-[node name="DroneThruster2" parent="." unique_id=227745377 instance=ExtResource("2_4nai4")]
+[node name="DroneThrusterNorth" parent="." unique_id=227745377 instance=ExtResource("2_4nai4")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.8829475, -0.46947154, 0, 0.46947154, 0.8829475, 0, -0.26, -0.622)
 
-[node name="DroneThruster3" parent="." unique_id=419065038 instance=ExtResource("2_4nai4")]
+[node name="DroneThrusterEast" parent="." unique_id=419065038 instance=ExtResource("2_4nai4")]
+unique_name_in_owner = true
 transform = Transform3D(0.88294756, -0.46947154, 0, 0.46947157, 0.8829475, 0, 0, 0, 0.99999994, 0.622, -0.26, 0)
 
-[node name="DroneThruster4" parent="." unique_id=1920883965 instance=ExtResource("2_4nai4")]
+[node name="DroneThrusterWest" parent="." unique_id=1920883965 instance=ExtResource("2_4nai4")]
+unique_name_in_owner = true
 transform = Transform3D(0.88294756, 0.46947154, 0, -0.46947157, 0.8829475, 0, 0, 0, 0.99999994, -0.622, -0.26, 0)

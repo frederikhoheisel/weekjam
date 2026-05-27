@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bsnj4ea7hrtj6"]
+
+[ext_resource type="PackedScene" uid="uid://duti1o6ffrs5t" path="res://src/drone/drone.tscn" id="1_vq623"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vq623"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1r8rn"]
+sky_material = SubResource("ProceduralSkyMaterial_vq623")
+
+[sub_resource type="Environment" id="Environment_5ypgx"]
+background_mode = 2
+sky = SubResource("Sky_1r8rn")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vq623"]
+size = Vector2(100, 100)
+
+[node name="Test" type="Node3D" unique_id=376643496]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1614016242]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1481656411]
+environment = SubResource("Environment_5ypgx")
+
+[node name="Drone" parent="." unique_id=1303569735 instance=ExtResource("1_vq623")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1874619421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5690143, 0)
+mesh = SubResource("PlaneMesh_vq623")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1803770917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7719727, 0)
+size = Vector3(100, 2.46, 100)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=529301974]
+transform = Transform3D(1, 0, 0, 0, 0.54841, 0.83620965, 0, -0.83620965, 0.54841, 0, 3.7217011, 1.3663692)
