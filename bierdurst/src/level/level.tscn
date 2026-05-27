@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ef8forspnxic"]
+
+[ext_resource type="Script" uid="uid://b0oxdtmu7w5ul" path="res://src/level/level.gd" id="1_7lnir"]
+[ext_resource type="MeshLibrary" uid="uid://dqty8dpbgrwpd" path="res://src/level/gridmap/blocking.res" id="2_xv147"]
+[ext_resource type="PackedScene" uid="uid://de6uvq8qbuiyf" path="res://src/drone/player.tscn" id="3_af42n"]
+
+[sub_resource type="Environment" id="Environment_af42n"]
+
+[node name="Level" type="Node3D" unique_id=837621672 node_paths=PackedStringArray("player", "block_map")]
+script = ExtResource("1_7lnir")
+player = NodePath("Player")
+block_map = NodePath("BlockMap")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1337180348]
+environment = SubResource("Environment_af42n")
+
+[node name="BlockMap" type="GridMap" parent="." unique_id=617607331]
+mesh_library = ExtResource("2_xv147")
+cell_octant_size = 10
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player" parent="." unique_id=379567297 instance=ExtResource("3_af42n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07835698, 0, -0.435562)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1736731755]
+transform = Transform3D(1, 0, 0, 0, 0.09188401, 0.99576974, 0, -0.99576974, 0.09188401, 3.6193016, 20.27549, 2.9970589)
+fov = 61.6
+near = 0.011
