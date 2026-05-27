@@ -24,6 +24,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_right"):
 		animate(3)
 
+	
+func move_to(pos: Vector3) -> void:
+	#print("move player to", pos)
+	var tween =  get_tree().create_tween()
+	tween.tween_property(self, "global_position", pos, 0.4)
+
 
 func animate(id: int) -> void:
 	if wiggle_tween:
