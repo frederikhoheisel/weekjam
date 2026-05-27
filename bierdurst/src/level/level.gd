@@ -10,7 +10,8 @@ var grid: Array[bool] = []
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	player_grid_pos = grid_map.local_to_map(grid_map.to_local(player.global_position))
+	pass
+	#player_grid_pos = grid_map.local_to_map(grid_map.to_local(player.global_position))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
