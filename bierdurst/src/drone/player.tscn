@@ -6,7 +6,9 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_askyv"]
 
-[node name="Player" type="Node3D" unique_id=379567297]
+[sub_resource type="BoxShape3D" id="BoxShape3D_askyv"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1752815305 groups=["player"]]
 script = ExtResource("1_askyv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=613073415]
@@ -15,3 +17,6 @@ mesh = SubResource("CapsuleMesh_p03w3")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1909336540]
 transform = Transform3D(0.09157097, 0, 0, 0, -1.2829855e-08, 0.09969433, 0, -0.29351288, -4.3577773e-09, 0, 0.31529212, -0.53392005)
 mesh = SubResource("CylinderMesh_askyv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431359656]
+shape = SubResource("BoxShape3D_askyv")

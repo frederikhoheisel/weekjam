@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b6v8myf743km1"]
+
+[ext_resource type="Script" uid="uid://bgik1tqpc38go" path="res://src/entities/dude/dude.gd" id="1_56uof"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_03tcb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_56uof"]
+radius = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ghrg7"]
+radius = 0.2
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t3b5u"]
+top_radius = 0.03
+bottom_radius = 0.05
+height = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ja0ro"]
+
+[node name="Dude" type="Node3D" unique_id=1214129228]
+script = ExtResource("1_56uof")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=687225531]
+mesh = SubResource("SphereMesh_03tcb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=831715303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61737347, 0)
+mesh = SubResource("SphereMesh_56uof")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=75151435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1738251, 0)
+mesh = SubResource("SphereMesh_ghrg7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1394253903]
+transform = Transform3D(1, 0, 0, 0, 0.060020667, -0.99819714, 0, 0.99819714, 0.060020667, 0, 1.207556, 0.15690994)
+mesh = SubResource("CylinderMesh_t3b5u")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=993461577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=837806599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140585, 0, 0)
+shape = SubResource("BoxShape3D_ja0ro")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

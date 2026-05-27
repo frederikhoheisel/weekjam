@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c7kol5rmyh15w"]
+
+[ext_resource type="Script" uid="uid://dee08fsb206j3" path="res://src/entities/fridge/fridge.gd" id="1_13ch5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_udmad"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_13ch5"]
+size = Vector3(0.2, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_puoiu"]
+
+[node name="Fridge" type="Node3D" unique_id=2057293607]
+script = ExtResource("1_13ch5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=526294543]
+transform = Transform3D(1, 0, 0, 0, 1.8368986, 0, 0, 0, 1, 0, 0.7940331, 0)
+mesh = SubResource("BoxMesh_udmad")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1987372244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3206396, 0.90781903, 0.5341511)
+mesh = SubResource("BoxMesh_13ch5")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1012721204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70412207, 0.4347219)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1621361022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.57330596)
+shape = SubResource("BoxShape3D_puoiu")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -4,6 +4,4 @@
 
 [node name="Tiles" type="Node3D" unique_id=282772184]
 
-[node name="Block" parent="." unique_id=991303694 instance=ExtResource("1_4kxp5")]
-
-[node name="Blocker" type="Node3D" parent="." unique_id=88240557]
+[node name="BlockedCell" parent="." unique_id=991303694 instance=ExtResource("1_4kxp5")]
