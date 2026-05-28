@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 
 @export var wiggle_amount: float = PI / 16.0
@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 
 	
 func move_to(pos: Vector3) -> void:
-	#print("move player to", pos)
+	print("move player to", pos)
 	var tween =  get_tree().create_tween()
 	tween.tween_property(self, "global_position", pos, 0.4)
 
@@ -62,3 +62,9 @@ func animate(id: int) -> void:
 	wiggle_tween.tween_property(self, "rotation", Vector3(0.0, 0.0, 0.0), wiggle_time)\
 		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	
+func show_sterni():
+	await get_tree().create_timer(0.8).timeout
+	$sterni.visible = true
+	
+func hide_sterni():
+	$sterni.visible = false
