@@ -7,4 +7,7 @@ class_name Box
 
 func move_to(pos: Vector3) -> void:
 	var tween =  get_tree().create_tween()
-	tween.tween_property(self, "global_position", pos, 0.4).set_trans(Tween.TRANS_SINE).set_delay(0.1)
+	tween.tween_property(self, "global_position", pos, 0.3).set_trans(Tween.TRANS_SINE).set_delay(0.1)
+	gpu_particles_3d.emitting = true
+	tween.tween_callback(func(): gpu_particles_3d.emitting = false)
+	

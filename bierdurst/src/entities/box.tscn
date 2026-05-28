@@ -26,45 +26,34 @@ emission_ring_height = 0.1
 emission_ring_radius = 0.5
 emission_ring_inner_radius = 0.4
 emission_ring_cone_angle = 90.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.3, 0)
 scale_curve = SubResource("CurveTexture_50hp7")
+color = Color(0.7964034, 0.75498146, 0.6098698, 1)
 alpha_curve = SubResource("CurveTexture_dylja")
 
-[sub_resource type="Gradient" id="Gradient_dylja"]
-offsets = PackedFloat32Array(0, 0.5073892)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pp8lh"]
-gradient = SubResource("Gradient_dylja")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.1)
-metadata/_snap_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50hp7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so2ac"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_pp8lh")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_g548s"]
-material = SubResource("StandardMaterial3D_50hp7")
+[sub_resource type="SphereMesh" id="SphereMesh_dylja"]
+material = SubResource("StandardMaterial3D_so2ac")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 4
 
 [node name="Box" type="StaticBody3D" unique_id=1054621522]
 script = ExtResource("1_so2ac")
 
 [node name="box" parent="." unique_id=2103103828 instance=ExtResource("1_x68c1")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=164678541]
 shape = SubResource("BoxShape3D_g548s")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=349074552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+emitting = false
+amount = 24
 process_material = SubResource("ParticleProcessMaterial_so2ac")
-draw_pass_1 = SubResource("QuadMesh_g548s")
+draw_pass_1 = SubResource("SphereMesh_dylja")
