@@ -24,11 +24,18 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_right"):
 		animate(3)
 
-	
+
 func move_to(pos: Vector3) -> void:
-	print("move player to", pos)
+	#print("move player to", pos)
 	var tween =  get_tree().create_tween()
 	tween.tween_property(self, "global_position", pos, 0.4)
+
+
+func attempt_move(pos: Vector3) -> void:
+	var og_pos: Vector3 = self.global_position
+	var tween =  get_tree().create_tween()
+	tween.tween_property(self, "global_position", self.global_position + (pos - self.global_position) / 4.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "global_position", og_pos, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 
 func animate(id: int) -> void:

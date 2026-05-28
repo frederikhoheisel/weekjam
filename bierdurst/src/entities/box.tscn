@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dmsca2efntuq6"]
+
+[ext_resource type="Script" uid="uid://tm1uoh50f8i7" path="res://src/entities/box.gd" id="1_so2ac"]
+[ext_resource type="PackedScene" uid="uid://bm4tyeum2ute1" path="res://assets/models/box.glb" id="1_x68c1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g548s"]
+
+[sub_resource type="Curve" id="Curve_so2ac"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dylja"]
+curve = SubResource("Curve_so2ac")
+
+[sub_resource type="Curve" id="Curve_pp8lh"]
+_data = [Vector2(0, 0.5543188), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_50hp7"]
+curve = SubResource("Curve_pp8lh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_so2ac"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.4
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_50hp7")
+alpha_curve = SubResource("CurveTexture_dylja")
+
+[sub_resource type="Gradient" id="Gradient_dylja"]
+offsets = PackedFloat32Array(0, 0.5073892)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pp8lh"]
+gradient = SubResource("Gradient_dylja")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50hp7"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_pp8lh")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_g548s"]
+material = SubResource("StandardMaterial3D_50hp7")
+
+[node name="Box" type="StaticBody3D" unique_id=1054621522]
+script = ExtResource("1_so2ac")
+
+[node name="box" parent="." unique_id=2103103828 instance=ExtResource("1_x68c1")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=164678541]
+shape = SubResource("BoxShape3D_g548s")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=349074552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+process_material = SubResource("ParticleProcessMaterial_so2ac")
+draw_pass_1 = SubResource("QuadMesh_g548s")
