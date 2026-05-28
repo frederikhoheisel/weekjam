@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://b0oxdtmu7w5ul" path="res://src/level/level.gd" id="1_7lnir"]
 [ext_resource type="MeshLibrary" uid="uid://dqty8dpbgrwpd" path="res://src/level/gridmap/blocking.res" id="2_xv147"]
 [ext_resource type="PackedScene" uid="uid://duti1o6ffrs5t" path="res://src/drone/drone.tscn" id="3_af42n"]
+[ext_resource type="PackedScene" uid="uid://ctkhmmshlpfx7" path="res://src/ui/hud.tscn" id="4_mpbj7"]
 
 [sub_resource type="Environment" id="Environment_af42n"]
 
-[node name="Level" type="Node3D" unique_id=837621672 node_paths=PackedStringArray("player", "block_map")]
+[node name="Level" type="Node3D" unique_id=837621672 node_paths=PackedStringArray("player", "block_map", "hud")]
 script = ExtResource("1_7lnir")
 player = NodePath("Drone")
 block_map = NodePath("BlockMap")
+hud = NodePath("Hud")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1337180348]
 environment = SubResource("Environment_af42n")
@@ -27,5 +29,6 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 0.09188401, 0.99576974, 0, -0.99576974, 0.09188401, 3.6193016, 20.27549, 2.9970589)
 fov = 41.6
 near = 0.011
+[node name="Hud" parent="." unique_id=272555385 instance=ExtResource("4_mpbj7")]
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://c72qa8yd76jmk" path="res://src/entities/Ventilator/ventilator.tscn" id="4_2xb4r"]
 
 [node name="Level0" unique_id=837621672 node_paths=PackedStringArray("fridge", "dude") instance=ExtResource("1_jmnfa")]
+moves_up = 10
+moves_left = 10
+moves_down = 10
+moves_right = 10
 fridge = NodePath("Fridge")
 dude = NodePath("Dude")
 

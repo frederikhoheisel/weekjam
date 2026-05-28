@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://drp72uk5iii7l"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 player=""
