@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://djpvroimcw0ox"]
+
+[ext_resource type="Script" uid="uid://bokpbt7rjmb3i" path="res://src/ui/ui_key.gd" id="1_ipgl0"]
+[ext_resource type="Texture2D" uid="uid://dsgwax3lq5flq" path="res://assets/textures/a.png" id="2_ipgl0"]
+[ext_resource type="FontFile" uid="uid://d2c3najkvcj3w" path="res://assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_e2vu5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ipgl0"]
+font = ExtResource("3_e2vu5")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(1, 1, 0, 1)
+
+[node name="UIKey" type="HBoxContainer" unique_id=351766119]
+offset_right = 35.0
+offset_bottom = 23.0
+theme_override_constants/separation = -10
+script = ExtResource("1_ipgl0")
+texture = ExtResource("2_ipgl0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=44192279]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_ipgl0")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1848371342]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "6x"
+label_settings = SubResource("LabelSettings_ipgl0")
+vertical_alignment = 2

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ctkhmmshlpfx7"]
+
+[ext_resource type="PackedScene" uid="uid://djpvroimcw0ox" path="res://src/ui/ui_key.tscn" id="1_i4jpw"]
+[ext_resource type="Script" uid="uid://datopou3oefeu" path="res://src/ui/hud.gd" id="1_r2cn7"]
+[ext_resource type="Texture2D" uid="uid://drr1ke346rhgn" path="res://assets/textures/w.png" id="2_r2cn7"]
+[ext_resource type="Texture2D" uid="uid://4jud3r7a67s3" path="res://assets/textures/s.png" id="4_vbpn1"]
+[ext_resource type="Texture2D" uid="uid://b2d66g630prsk" path="res://assets/textures/d.png" id="5_r2cn7"]
+
+[node name="Hud" type="CanvasLayer" unique_id=272555385]
+script = ExtResource("1_r2cn7")
+
+[node name="UIKeyW" parent="." unique_id=699389501 instance=ExtResource("1_i4jpw")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.85
+anchor_right = 0.07
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r2cn7")
+
+[node name="UIKeyA" parent="." unique_id=239208211 instance=ExtResource("1_i4jpw")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.92
+anchor_right = 0.02
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIKeyS" parent="." unique_id=50984587 instance=ExtResource("1_i4jpw")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.92
+anchor_right = 0.07
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vbpn1")
+
+[node name="UIKeyD" parent="." unique_id=762324131 instance=ExtResource("1_i4jpw")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.92
+anchor_right = 0.12
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_r2cn7")

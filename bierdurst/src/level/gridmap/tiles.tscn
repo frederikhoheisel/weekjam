@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uki85lfe3jfd"]
 
-[ext_resource type="PackedScene" uid="uid://cp27fqcvgos3l" path="res://src/level/gridmap/blocked_cell.tscn" id="1_4kxp5"]
+[ext_resource type="PackedScene" uid="uid://bxgpvpgmld88u" path="res://assets/cube.glb" id="1_4kxp5"]
 
 [node name="Tiles" type="Node3D" unique_id=282772184]
 
-[node name="BlockedCell" parent="." unique_id=991303694 instance=ExtResource("1_4kxp5")]
+[node name="cube" parent="." unique_id=1699703065 instance=ExtResource("1_4kxp5")]
