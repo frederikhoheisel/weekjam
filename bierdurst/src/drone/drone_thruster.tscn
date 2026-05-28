@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn1hbnbbuxsfl"]
 
 [ext_resource type="PackedScene" uid="uid://bqynu02fpq10u" path="res://assets/models/drone_thruster.glb" id="1_naubj"]
-[ext_resource type="Shader" path="res://src/drone/drone_thruster.gdshader" id="2_ysse6"]
+[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_ysse6"]
 
 [sub_resource type="GDScript" id="GDScript_naubj"]
 script/source = "extends Node3D
