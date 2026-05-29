@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7kol5rmyh15w" path="res://src/entities/fridge/fridge.tscn" id="2_631v1"]
 [ext_resource type="PackedScene" uid="uid://b6v8myf743km1" path="res://src/entities/dude/dude.tscn" id="3_lkoic"]
 [ext_resource type="PackedScene" uid="uid://c72qa8yd76jmk" path="res://src/entities/Ventilator/ventilator.tscn" id="4_2xb4r"]
+[ext_resource type="PackedScene" uid="uid://7cggjjenudw4" path="res://src/entities/Ventilator/wind_block_test.tscn" id="5_qdib1"]
 
 [node name="Level0" unique_id=837621672 node_paths=PackedStringArray("fridge", "dude") instance=ExtResource("1_jmnfa")]
 moves_up = 10
@@ -19,7 +20,7 @@ data = {
 }
 
 [node name="Drone" parent="." index="2" unique_id=1303569735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9989176, 0, -0.91480255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999, 1, -0.8127489)
 
 [node name="Fridge" parent="." index="4" unique_id=2057293607 instance=ExtResource("2_631v1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -13.24324)
@@ -31,4 +32,7 @@ transform = Transform3D(-0.0038745743, 0, -0.9999925, 0, 1, 0, 0.9999925, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 0.09188401, 0.99576974, 0, -0.99576974, 0.09188401, 3.6193016, 20.27549, -3.859373)
 
 [node name="Ventilator" parent="." index="7" unique_id=1413176500 instance=ExtResource("4_2xb4r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2297981, -0.02366671, -12.509626)
+
+[node name="StaticBody3D" parent="." index="8" unique_id=650770206 instance=ExtResource("5_qdib1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73489237, 0, -8)

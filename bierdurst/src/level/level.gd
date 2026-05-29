@@ -59,6 +59,7 @@ func _process(_delta: float) -> void:
 	#if (Vector3i(player_grid_pos) == block_map.local_to_map(block_map.to_local(fridge.global_position))):
 	#	got_beer = true
 	
+
 func check_and_move(pos: Vector3, id: int) -> void:
 	var cell_id: int = block_map.get_cell_item(pos)
 	#print("cell id:", cell_id)
