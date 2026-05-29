@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dndb7lprikuf4" path="res://assets/models/drone_body.glb" id="1_1akv4"]
 [ext_resource type="Script" uid="uid://bvjjqg5e0pcvh" path="res://src/drone/drone.gd" id="1_uou57"]
 [ext_resource type="PackedScene" uid="uid://bn1hbnbbuxsfl" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
-[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
+[ext_resource type="Shader" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
 [ext_resource type="PackedScene" uid="uid://mmgt05fv4ace" path="res://assets/models/sterni.glb" id="5_ajne0"]
 
 [sub_resource type="Gradient" id="Gradient_naubj"]
@@ -54,6 +54,74 @@ cap_bottom = false
 radius = 0.47369385
 height = 1.1997681
 
+[sub_resource type="Curve" id="Curve_ajne0"]
+_data = [Vector2(0, 0.82367444), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t8w4q"]
+curve = SubResource("Curve_ajne0")
+
+[sub_resource type="Gradient" id="Gradient_gfj03"]
+offsets = PackedFloat32Array(0, 0.13732395, 0.3943662, 0.6584507, 0.82746476)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 0.29803923, 0, 1, 0.85882354, 0, 0, 1, 0.641934, 0.641934, 0.641934, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_26j64"]
+gradient = SubResource("Gradient_gfj03")
+
+[sub_resource type="Curve" id="Curve_tl602"]
+_data = [Vector2(0, 0.45903772), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0fdke"]
+curve = SubResource("Curve_tl602")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8difi"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.01
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 1, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_0fdke")
+color_ramp = SubResource("GradientTexture1D_26j64")
+alpha_curve = SubResource("CurveTexture_t8w4q")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Gradient" id="Gradient_svvpu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y6pbg"]
+gradient = SubResource("Gradient_svvpu")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvys4"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_y6pbg")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_1or3r"]
+material = SubResource("StandardMaterial3D_pvys4")
+size = Vector2(0.1, 0.1)
+
 [node name="Drone" type="CharacterBody3D" unique_id=2058423440 groups=["player"]]
 script = ExtResource("1_uou57")
 
@@ -86,3 +154,18 @@ shape = SubResource("CapsuleShape3D_uou57")
 [node name="sterni" parent="." unique_id=1225203369 instance=ExtResource("5_ajne0")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.34576353, 0)
 visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1054451255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13889183, 0)
+amount = 128
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8difi")
+draw_pass_1 = SubResource("QuadMesh_1or3r")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=542821459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16372254, 0)
+light_color = Color(1, 0.72156864, 0.52156866, 1)
+shadow_enabled = true
+omni_range = 4.0
+omni_attenuation = 2.0

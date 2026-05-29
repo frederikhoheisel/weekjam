@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://def01jw33u7vr"]
+
+[ext_resource type="PackedScene" uid="uid://db5n1m3lsqhq6" path="res://assets/models/floor.glb" id="1_i05xf"]
+[ext_resource type="PackedScene" uid="uid://cd8bu7l5f3cqe" path="res://assets/models/wall.glb" id="2_43ksq"]
+
+[node name="Tilemap" type="Node3D" unique_id=921091762]
+
+[node name="floor" parent="." unique_id=991655825 instance=ExtResource("1_i05xf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="wall" parent="." unique_id=764945107 instance=ExtResource("2_43ksq")]

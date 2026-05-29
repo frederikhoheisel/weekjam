@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dmsca2efntuq6"]
+
+[ext_resource type="Script" uid="uid://tm1uoh50f8i7" path="res://src/entities/box.gd" id="1_so2ac"]
+[ext_resource type="PackedScene" uid="uid://bm4tyeum2ute1" path="res://assets/models/box.glb" id="1_x68c1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g548s"]
+
+[sub_resource type="Curve" id="Curve_so2ac"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dylja"]
+curve = SubResource("Curve_so2ac")
+
+[sub_resource type="Curve" id="Curve_pp8lh"]
+_data = [Vector2(0, 0.5543188), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_50hp7"]
+curve = SubResource("Curve_pp8lh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_so2ac"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.4
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0.3, 0)
+scale_curve = SubResource("CurveTexture_50hp7")
+color = Color(0.7964034, 0.75498146, 0.6098698, 1)
+alpha_curve = SubResource("CurveTexture_dylja")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so2ac"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_dylja"]
+material = SubResource("StandardMaterial3D_so2ac")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 4
+
+[node name="Box" type="StaticBody3D" unique_id=1054621522]
+script = ExtResource("1_so2ac")
+
+[node name="box" parent="." unique_id=2103103828 instance=ExtResource("1_x68c1")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=164678541]
+shape = SubResource("BoxShape3D_g548s")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=349074552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_so2ac")
+draw_pass_1 = SubResource("SphereMesh_dylja")
