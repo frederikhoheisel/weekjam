@@ -1381,6 +1381,7 @@ script = ExtResource("1_13ch5")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1012721204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70412207, 0.4347219)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1621361022]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0365179)
@@ -1412,6 +1413,7 @@ libraries/ = SubResource("AnimationLibrary_38f0u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8178107, 0.21361005)
 light_energy = 0.0
 shadow_enabled = true
+omni_range = 1.0
 
 [node name="sterni" parent="." unique_id=1225203369 instance=ExtResource("6_dljai")]
 transform = Transform3D(-0.99915755, 0, -0.04103858, 0, 1, 0, 0.04103858, 0, -0.99915755, 0.041026935, 1.685455, 0.31287622)

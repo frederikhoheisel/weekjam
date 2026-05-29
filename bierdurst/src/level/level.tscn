@@ -39,4 +39,8 @@ mesh_library = ExtResource("5_em31m")
 [node name="BoxContainer" type="Node" parent="." unique_id=393386551]
 unique_name_in_owner = true
 
+[node name="VentilatorContainer" type="Node" parent="." unique_id=463850112]
+
+[node name="Props" type="Node" parent="." unique_id=511500980]
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

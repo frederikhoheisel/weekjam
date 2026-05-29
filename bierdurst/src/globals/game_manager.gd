@@ -8,6 +8,8 @@ signal game_over
 signal fridge_reached
 signal dude_reached
 
+signal blow_drone(dir: Vector3, block_dist: int)
+
 var current_level: Node = null
 var current_level_id: int = -1
 

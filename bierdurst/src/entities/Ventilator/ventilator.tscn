@@ -93,7 +93,8 @@ material = SubResource("StandardMaterial3D_8rjo1")
 size = Vector2(0.15, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc43h"]
-size = Vector3(1.42, 1.8, 8)
+resource_local_to_scene = true
+size = Vector3(1.42, 1.8, 18)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6cg2"]
 resource_name = "Material"
@@ -135,10 +136,10 @@ shadow_mesh = SubResource("ArrayMesh_48pkc")
 
 [node name="Ventilator" type="Node3D" unique_id=1413176500]
 script = ExtResource("1_pc43h")
-reach = 4
+reach = 9
 
 [node name="RotorPivot" type="Node3D" parent="." unique_id=1191971095]
-transform = Transform3D(0.37840357, 0.92564046, 0, -0.92564046, 0.37840357, 0, 0, 0, 1, 0, 1.536701, 0)
+transform = Transform3D(0.45004812, -0.893004, 0, 0.893004, 0.45004812, 0, 0, 0, 1, 0, 1.536701, 0)
 
 [node name="Rotor" type="MeshInstance3D" parent="RotorPivot" unique_id=2087513930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0524, 0)
@@ -146,16 +147,17 @@ mesh = SubResource("ArrayMesh_j76qe")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=952836103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5133355, 0.26050484)
-amount = 64
-lifetime = 1.5999999999999999
+amount = 144
+lifetime = 3.5999999999999996
 trail_lifetime = 3.2699999999999996
 process_material = SubResource("ParticleProcessMaterial_2iev6")
 draw_pass_1 = SubResource("QuadMesh_ungqv")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1467037266]
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=651178585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1629307, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5250621, 9)
 shape = SubResource("BoxShape3D_pc43h")
 
 [node name="venti" type="Node3D" parent="." unique_id=251661965]
@@ -164,8 +166,9 @@ shape = SubResource("BoxShape3D_pc43h")
 mesh = SubResource("ArrayMesh_glyaw")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=443920022]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1028025, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901, 1.01)
 enabled = false
-target_position = Vector3(0, 0, 999)
+target_position = Vector3(0, 0, 18)
+collision_mask = 2
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
