@@ -13,7 +13,7 @@ point_count = 2
 curve = SubResource("Curve_so2ac")
 
 [sub_resource type="Curve" id="Curve_pp8lh"]
-_data = [Vector2(0, 0.5543188), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.5543188), 0.0, 0.0, 0, 0, Vector2(0.5070093, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_50hp7"]
@@ -55,5 +55,6 @@ shape = SubResource("BoxShape3D_g548s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 emitting = false
 amount = 24
+lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_so2ac")
 draw_pass_1 = SubResource("SphereMesh_dylja")

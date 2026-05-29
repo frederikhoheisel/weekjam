@@ -64,7 +64,7 @@ func check_and_move(pos: Vector3, id: int) -> void:
 	var cell_id: int = block_map.get_cell_item(pos)
 	#print("cell id:", cell_id)
 	player.animate(id)
-	if (cell_id == 0) or check_for_box(pos): 
+	if (cell_id == 0) or check_for_box(pos, id): 
 		player.attempt_move(block_map.to_global(block_map.map_to_local(pos)))
 	else:
 		player_grid_pos = pos
@@ -90,7 +90,7 @@ func check_and_move(pos: Vector3, id: int) -> void:
 			hud.display_moves_right(moves_right)
 
 
-func check_for_box(pos: Vector3) -> bool:
+func check_for_box(pos: Vector3, id: int) -> bool:
 	var dir: Vector3 = (player.global_position - block_map.to_global(block_map.map_to_local(pos))).normalized()
 	var global_box_pos: Vector3 = block_map.to_global(block_map.map_to_local(pos))
 	for box: Box in boxes:
@@ -103,6 +103,19 @@ func check_for_box(pos: Vector3) -> bool:
 				if next_box_pos.is_equal_approx(next_box.global_position): return true
 			
 			box.move_to(next_box_pos)
+			match id:
+				2:
+					moves_up -= 1
+					hud.display_moves_up(moves_up)
+				3:
+					moves_left -= 1
+					hud.display_moves_left(moves_left)
+				0:
+					moves_down -= 1
+					hud.display_moves_down(moves_down)
+				1:
+					moves_right -= 1
+					hud.display_moves_right(moves_right)
 	
 	return false
 

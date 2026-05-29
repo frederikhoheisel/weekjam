@@ -9,7 +9,7 @@ signal fridge_reached
 signal dude_reached
 
 var current_level: Node = null
-var current_level_id: int = -1
+var current_level_id: int = 1
 
 
 # Called when the node enters the scene tree for the first time.
