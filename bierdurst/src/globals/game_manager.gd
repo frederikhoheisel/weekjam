@@ -2,10 +2,13 @@ extends Node
 
 # Signals
 signal level_started(level_id: int)
+@warning_ignore("unused_signal")
 signal level_completed(level_id: int)
+@warning_ignore("unused_signal")
 signal game_over
-
+@warning_ignore("unused_signal")
 signal fridge_reached
+@warning_ignore("unused_signal")
 signal dude_reached
 
 var current_level: Node = null
