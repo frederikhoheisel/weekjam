@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://brrg1jhg8m2u8" path="res://assets/models/sofa_sofa.png" id="6_n7oai"]
 [ext_resource type="PackedScene" uid="uid://dcuxhhxv5i0j2" path="res://assets/models/table.glb" id="7_imwje"]
 [ext_resource type="PackedScene" uid="uid://ck6a0lywp0jmb" path="res://assets/models/mouse.glb" id="8_em1oq"]
-[ext_resource type="PackedScene" uid="uid://b71h33fippee" path="res://assets/models/keyboard.glb" id="9_uuwma"]
-[ext_resource type="PackedScene" uid="uid://b6v8myf743km1" path="res://src/entities/dude/dude.tscn" id="10_7637d"]
+[ext_resource type="PackedScene" uid="uid://cue7hvdmpp770" path="res://src/entities/keyboard/keyboard.tscn" id="9_uuwma"]
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="11_7637d"]
 [ext_resource type="PackedScene" uid="uid://dkkcxbc3en5eo" path="res://assets/models/tissue.glb" id="12_0j22y"]
 [ext_resource type="PackedScene" uid="uid://d0l0jngi8hmmq" path="res://assets/models/tissue-box.glb" id="13_5vdjf"]
@@ -82,18 +81,12 @@ data = {
 [node name="Drone" parent="." index="3" unique_id=1303569735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 9)
 
-[node name="Camera3D" parent="." index="5" unique_id=1736731755]
-transform = Transform3D(1, 0, 0, 0, 0.7629054, 0.6465101, 0, -0.6465101, 0.7629054, -2.508769, 12.024942, 17.422415)
-
-[node name="GridMap" parent="." index="7" unique_id=1886671177]
+[node name="GridMap" parent="." index="6" unique_id=1886671177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 data = {
-"cells": PackedInt32Array(-1, 65535, 0, -65536, 65535, 0, -65536, 65534, 1048579, -1, 65534, 0, -1, 65533, 1048578, -2, 65533, 0, -2, 65534, 0, -2, 65535, 0, -1, 0, 0, -1, 1, 0, -2, 1, 0, -2, 0, 0, -3, 0, 0, -65536, 1, 0, -65535, 1, 1, -65535, 0, 1, -65536, 0, 0, -65535, 65535, 1, -2, 65532, 0, -3, 65534, 0, -4, 65534, 655363, -5, 65535, 655361, -4, 0, 0, -3, 1, 0, -2, 2, 0, -2, 3, 0, -1, 4, 0, -65536, 4, 0, -1, 3, 0, -3, 2, 0, -4, 2, 0, -5, 1, 655362, -5, 0, 655361, -4, 1, 0, -1, 2, 0, -65536, 2, 0, -65536, 3, 0, -2, 4, 0, -1, 5, 0, -65536, 6, 1441793, -65536, 5, 0, -65535, 5, 0, -65535, 4, 0, -65534, 5, 0, -65534, 4, 0, -65535, 6, 1441793, -6, 4, 655361, -4, 3, 0, -3, 4, 0, -2, 5, 0, -3, 5, 0, -4, 5, 0, -5, 5, 0, -6, 5, 655361, -5, 6, 1441793, -4, 6, 1441793, -3, 6, 1441793, -2, 6, 1441793, -1, 6, 1441793, -4, 4, 0, -5, 4, 0, -4, 65535, 0, -3, 65535, 0, -3, 3, 0, -3, 65533, 655362, -3, 65532, 655361, -1, 65532, 1, -65533, 5, 1, -65533, 4, 1, -2, 65531, 1048577, -65535, 2, 1048578, -5, 2, 0, -5, 3, 0, -6, 2, 655361, -6, 3, 655361, -65535, 3, 655360, -65534, 3, 1048578, -65534, 6, 1441793)
+"cells": PackedInt32Array(-1, 65535, 0, -65536, 65535, 0, -65536, 65534, 1048579, -1, 65534, 0, -1, 65533, 1048578, -2, 65533, 0, -2, 65534, 0, -2, 65535, 0, -1, 0, 0, -1, 1, 0, -2, 1, 0, -2, 0, 0, -3, 0, 0, -65536, 1, 0, -65535, 1, 1, -65535, 0, 1, -65536, 0, 0, -65535, 65535, 1, -2, 65532, 0, -3, 65534, 0, -4, 65534, 655363, -5, 65535, 655361, -4, 0, 0, -3, 1, 0, -2, 2, 0, -2, 3, 0, -1, 4, 0, -65536, 4, 0, -1, 3, 0, -3, 2, 0, -4, 2, 0, -5, 1, 655362, -5, 0, 655361, -4, 1, 0, -1, 2, 0, -65536, 2, 0, -65536, 3, 0, -2, 4, 0, -1, 5, 0, -65536, 6, 1441793, -65536, 5, 0, -65535, 5, 0, -65535, 4, 0, -65534, 5, 0, -65534, 4, 0, -65535, 6, 1441793, -6, 4, 655361, -4, 3, 0, -3, 4, 0, -2, 5, 0, -3, 5, 0, -4, 5, 0, -5, 5, 0, -6, 5, 655361, -5, 6, 1441793, -4, 6, 1441793, -3, 6, 1441793, -2, 6, 1441793, -1, 6, 1441793, -4, 4, 0, -5, 4, 0, -4, 65535, 0, -3, 65535, 0, -3, 3, 0, -3, 65533, 655362, -3, 65532, 655361, -1, 65532, 1, -65533, 5, 1, -65533, 4, 1, -2, 65531, 1048577, -65535, 2, 1048578, -5, 2, 0, -5, 3, 0, -6, 2, 655361, -6, 3, 655361, -65535, 3, 655360, -65534, 3, 1048578, -65534, 6, 1441793, 2, 6, 1441793, 1, 6, 1441793, 0, 6, 1441793, 65535, 6, 1441793, 65534, 6, 1441793, 65533, 6, 1441793, 65532, 6, 1441793, 65531, 6, 1441793, 65530, 5, 655361, 65530, 4, 655361, 65530, 3, 655361, 65530, 2, 655361, 65531, 0, 655361, 65531, 65535, 655361, 3, 5, 1, 3, 4, 1, 1, 1, 1, 1, 0, 1, 65534, 65531, 1048577, 65533, 65532, 655361, 65535, 65532, 1, 2, 3, 1048578, 1, 2, 1048578, 0, 65534, 1048578, 65535, 65533, 1048578, 65533, 65533, 655362, 65532, 65534, 655362, 65531, 1, 655362, 1, 65535, 1)
 }
-metadata/_editor_floor_ = Vector3(0, -1, 0)
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="8" unique_id=977363894]
-size = Vector3(50, 0.8, 50)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Box2" parent="BoxContainer" parent_id_path=PackedInt32Array(393386551) index="0" unique_id=424173722 instance=ExtResource("2_p1dcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
@@ -131,16 +124,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
 [node name="Box12" parent="BoxContainer" parent_id_path=PackedInt32Array(393386551) index="11" unique_id=451239424 instance=ExtResource("2_p1dcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="8" unique_id=977363894]
+size = Vector3(50, 0.8, 50)
+
+[node name="Dude" parent="." index="9" unique_id=1214129228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2797046, 1.0330944, 9)
+
 [node name="Fridge" parent="." index="10" unique_id=2057293607 instance=ExtResource("5_3g2ip")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.965515, 0, -7.042493)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.965515, 0.5703412, -7.042493)
 
-[node name="Dude" parent="." index="11" unique_id=1214129228 instance=ExtResource("10_7637d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2631357, 1, 8.994265)
-
-[node name="objects" type="Node" parent="." index="12" unique_id=2097361328]
+[node name="objects" type="Node" parent="." index="11" unique_id=2097361328]
 
 [node name="Monitor" parent="objects" index="0" unique_id=495170575 node_paths=PackedStringArray("drone") instance=ExtResource("3_26b72")]
-transform = Transform3D(-0.6984403, 0, -0.71566844, 0, 1, 0, 0.71566844, 0, -0.6984403, 2.5887418, 2.6511388, 7.2016487)
+transform = Transform3D(-0.3822802, 0, -0.9240464, 0, 1, 0, 0.9240464, 0, -0.3822802, 2.5887418, 2.6511388, 7.2016487)
 drone = NodePath("../../Drone")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="objects" index="1" unique_id=61894254]
@@ -171,8 +167,8 @@ transform = Transform3D(0.12201812, 0, -1.3946726, 0, 1.4, 0, 1.3946726, 0, 0.12
 [node name="mouse" parent="objects" index="4" unique_id=1203662284 instance=ExtResource("8_em1oq")]
 transform = Transform3D(-0.42783397, 0, -1.9537036, 0, 2, 0, 1.9537036, 0, -0.42783397, 2.0636601, -0.11692333, 7.787446)
 
-[node name="keyboard" parent="objects" index="5" unique_id=1261879449 instance=ExtResource("9_uuwma")]
-transform = Transform3D(-0.12674265, 0, -1.4946358, 0, 1.5, 0, 1.4946358, 0, -0.12674265, 2.017229, 0.38416004, 7.9161043)
+[node name="keyboard2" parent="objects" index="5" unique_id=1261879449 instance=ExtResource("9_uuwma")]
+transform = Transform3D(-0.0844951, 0, -0.9964239, 0, 1, 0, 0.9964239, 0, -0.0844951, 2.017229, 0.3234067, 7.9161043)
 
 [node name="toiletpaper" parent="objects" index="6" unique_id=1344025232 instance=ExtResource("11_7637d")]
 transform = Transform3D(1.1925594, 0, -0.9098362, 0, 1.4999999, 0, 0.9098362, 0, 1.1925594, -9.57375, 0.64811134, 8.21631)
@@ -227,3 +223,6 @@ transform = Transform3D(0.094525345, 0, -0.99552244, 0, 1, 0, 0.99552244, 0, 0.0
 
 [node name="banana3" parent="objects" index="23" unique_id=1645480918 instance=ExtResource("14_66b86")]
 transform = Transform3D(0.094525345, 0, -0.99552244, 0, 1, 0, 0.99552244, 0, 0.094525345, 4.665927, 0.70525837, 11.0149975)
+
+[node name="SecurityCamera" parent="." index="12" unique_id=4290299]
+transform = Transform3D(1, 0, 0, 0, 0.7309965, 0.6823812, 0, -0.6823812, 0.7309965, -3.3215528, 4.6966887, 10.984716)

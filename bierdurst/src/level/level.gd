@@ -60,7 +60,6 @@ func _process(_delta: float) -> void:
 		check_and_move(player_grid_pos + Vector3(0, 0, 1), 0)
 	if Input.is_action_just_pressed("RIGHT") && moves_right > 0:
 		check_and_move(player_grid_pos + Vector3(1, 0, 0), 1)
-		
 	#if (Vector3i(player_grid_pos) == block_map.local_to_map(block_map.to_local(fridge.global_position))):
 	#	got_beer = true
 	
@@ -98,7 +97,9 @@ func check_and_move(pos: Vector3, id: int) -> void:
 			moves_right -= 1
 			hud.display_moves_right(moves_right)
 	
-	
+
+	if moves_up <= 0 and moves_left <= 0 and moves_down <= 0 and moves_right <= 0:
+		GameManager.game_over.emit()
 
 
 func check_for_box(pos: Vector3, id: int) -> bool:

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dys14elfy6kxn" path="res://src/entities/monitor/monitor.gd" id="1_1rlq5"]
 [ext_resource type="Texture2D" uid="uid://cs4y3s6yyjupy" path="res://assets/models/monitor_monitor.png" id="1_uxyd6"]
+[ext_resource type="Shader" uid="uid://cui0t1ixt53g0" path="res://src/entities/monitor/monitor.gdshader" id="3_g021k"]
+[ext_resource type="Texture2D" uid="uid://dkht84lbp8rqy" path="res://assets/textures/cam_controlls.png" id="4_vyr2o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38jmb"]
 resource_name = "Material.003"
@@ -45,15 +47,25 @@ shadow_mesh = SubResource("ArrayMesh_3s6vy")
 [sub_resource type="ViewportTexture" id="ViewportTexture_g021k"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyr2o"]
+shader = ExtResource("3_g021k")
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_speed = 6.0
+shader_parameter/roll_variation = 2.0
+shader_parameter/brightness = 1.4
+shader_parameter/aberation = 0.01
+shader_parameter/scanlines_width = 0.1
+shader_parameter/scanlines_opacity = 0.05
+
 [sub_resource type="Gradient" id="Gradient_1rlq5"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.41704035)
+offsets = PackedFloat32Array(0, 0.472103)
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g021k"]
 gradient = SubResource("Gradient_1rlq5")
-width = 8
-height = 8
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
@@ -66,13 +78,21 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_kj1cx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1986650491]
-transform = Transform3D(0.29953286, -0.2927018, -1.6991485, -0.07221792, 1.7209551, -0.3091892, 1.7226621, 0.123040736, 0.2824825, 0.039121866, 0.20594966, -0.030926824)
+transform = Transform3D(0.074968785, -0.07325907, -0.42527258, -0.018075114, 0.43073046, -0.07738563, 0.43115768, 0.030795338, 0.070701316, 0.039121866, 0.20594966, -0.030926824)
 flip_h = true
 texture_filter = 0
 texture = SubResource("ViewportTexture_g021k")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=22765197]
-size = Vector2i(96, 64)
+size = Vector2i(384, 256)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1329465155]
+material = SubResource("ShaderMaterial_vyr2o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="SubViewport" unique_id=1376395656]
 texture_filter = 1
@@ -86,5 +106,13 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = SubResource("GradientTexture2D_g021k")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1736335875]
+[node name="FPVCamera" type="Camera3D" parent="SubViewport" unique_id=1736335875]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1729279, -0.7023314, 2.929141)
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=512945728]
+transform = Transform3D(0.1711616, -0.16725816, -0.97094196, -0.041267384, 0.9834029, -0.17667952, 0.9843783, 0.07030899, 0.16141853, 0.024627745, -0.39943165, -0.84386367)
+flip_h = true
+modulate = Color(0.427493, 0.42749307, 0.42749307, 1)
+texture_filter = 0
+texture = ExtResource("4_vyr2o")
