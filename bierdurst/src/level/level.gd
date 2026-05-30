@@ -20,6 +20,7 @@ class_name Level
 
 var player_grid_pos: Vector3
 var player_is_moving = false
+var player_is_blown = false
 var got_beer: bool = false
 var box_dict: Dictionary[Box, Vector3i]
 var box_pos_dict: Dictionary[Box, Vector3]
@@ -34,13 +35,17 @@ func _ready() -> void:
 	#Signal connects
 	GameManager.fridge_reached.connect(_on_fridge_reached)
 	GameManager.dude_reached.connect(_on_dude_reached)
-	
+	GameManager.blow_drone.connect(_on_blow_drone)
 	hud.display_moves_up(moves_up)
 	hud.display_moves_left(moves_left)
 	hud.display_moves_down(moves_down)
 	hud.display_moves_right(moves_right)
 	
+	# assign boxes and move to nearest grid position
 	boxes = box_container.get_children()
+	for box: Box in boxes:
+		var box_grid_pos = block_map.local_to_map(block_map.to_local(box.global_position))
+		box.move_to(block_map.to_global(block_map.map_to_local(box_grid_pos)))
 
 
 
@@ -61,20 +66,24 @@ func _process(_delta: float) -> void:
 	
 
 func check_and_move(pos: Vector3, id: int) -> void:
+	player_is_moving = true
+	player_is_blown = false
+	move_timer.wait_time = 0.4
+	move_timer.start()
 	var cell_id: int = block_map.get_cell_item(pos)
 	#print("cell id:", cell_id)
 	player.animate(id)
-	if (cell_id == 0) or check_for_box(pos, id): 
+	var is_box: bool = check_for_box(pos, id)
+	if (cell_id == 0) or is_box: 
 		player.attempt_move(block_map.to_global(block_map.map_to_local(pos)))
 	else:
 		player_grid_pos = pos
 		player.move_to(block_map.to_global(block_map.map_to_local(pos)))
-	
-	
-	player_is_moving = true
-	move_timer.wait_time = 0.4
-	move_timer.start()
-	
+		match id: 
+			2: GameManager.drone_moved.emit(Vector3(0, 0, -1))
+			3: GameManager.drone_moved.emit(Vector3(-1, 0, 0))
+			0: GameManager.drone_moved.emit(Vector3(0, 0, 1))
+			1: GameManager.drone_moved.emit(Vector3(1, 0, 0))
 	match id:
 		2:
 			moves_up -= 1
@@ -88,6 +97,8 @@ func check_and_move(pos: Vector3, id: int) -> void:
 		1:
 			moves_right -= 1
 			hud.display_moves_right(moves_right)
+	
+	
 
 
 func check_for_box(pos: Vector3, id: int) -> bool:
@@ -120,6 +131,7 @@ func check_for_box(pos: Vector3, id: int) -> bool:
 	return false
 
 
+
 func level_completed() -> void:
 	# TODO: celebtration schabernack, saufi
 	GameManager.load_level()
@@ -134,6 +146,14 @@ func _on_dude_reached() -> void:
 		GameManager.level_completed.emit()
 		GameManager.load_level()
 
+func _on_blow_drone(dir: Vector3, dist: int) -> void:
+	if player_is_moving: await $MoveTimer.timeout
+	player_is_moving = true
+	player_is_blown = true
+	move_timer.wait_time = 0.4
+	move_timer.start()
+	player_grid_pos += dir * dist
+	player.move_to(block_map.to_global(block_map.map_to_local(player_grid_pos)))
 
 func _on_move_timer_timeout() -> void:
 	player_is_moving = false

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmsca2efntuq6"]
+[gd_scene format=3 uid="uid://dwvk3m007lhxn"]
 
 [ext_resource type="Script" uid="uid://tm1uoh50f8i7" path="res://src/entities/box.gd" id="1_so2ac"]
 [ext_resource type="PackedScene" uid="uid://bm4tyeum2ute1" path="res://assets/models/box.glb" id="1_x68c1"]
@@ -42,7 +42,9 @@ height = 0.4
 radial_segments = 8
 rings = 4
 
-[node name="Box" type="StaticBody3D" unique_id=1054621522]
+[node name="Box" type="StaticBody3D" unique_id=1054621522 groups=["wind_obstacle"]]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_so2ac")
 
 [node name="box" parent="." unique_id=2103103828 instance=ExtResource("1_x68c1")]

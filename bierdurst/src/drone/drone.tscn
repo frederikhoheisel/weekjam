@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dndb7lprikuf4" path="res://assets/models/drone_body.glb" id="1_1akv4"]
 [ext_resource type="Script" uid="uid://bvjjqg5e0pcvh" path="res://src/drone/drone.gd" id="1_uou57"]
 [ext_resource type="PackedScene" uid="uid://bn1hbnbbuxsfl" path="res://src/drone/drone_thruster.tscn" id="2_4nai4"]
-[ext_resource type="Shader" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
+[ext_resource type="Shader" uid="uid://iqx8fyt244cw" path="res://src/drone/drone_thruster.gdshader" id="2_uou57"]
 [ext_resource type="PackedScene" uid="uid://mmgt05fv4ace" path="res://assets/models/sterni.glb" id="5_ajne0"]
 
 [sub_resource type="Gradient" id="Gradient_naubj"]
@@ -123,6 +123,7 @@ material = SubResource("StandardMaterial3D_pvys4")
 size = Vector2(0.1, 0.1)
 
 [node name="Drone" type="CharacterBody3D" unique_id=2058423440 groups=["player"]]
+collision_mask = 0
 script = ExtResource("1_uou57")
 
 [node name="drone_body" parent="." unique_id=1661802652 instance=ExtResource("1_1akv4")]

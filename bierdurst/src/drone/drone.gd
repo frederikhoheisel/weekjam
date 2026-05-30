@@ -31,6 +31,7 @@ func move_to(pos: Vector3) -> void:
 	tween.tween_property(self, "global_position", pos, 0.4)
 
 
+
 func attempt_move(pos: Vector3) -> void:
 	var og_pos: Vector3 = self.global_position
 	var tween =  get_tree().create_tween()
