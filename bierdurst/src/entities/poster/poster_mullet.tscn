@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2oavyq4cp5db"]
+
+[ext_resource type="Texture2D" uid="uid://61uue1se4m4t" path="res://assets/textures/poster4.png" id="1_fg6ip"]
+
+[node name="PosterMullet" type="Sprite3D" unique_id=1421146387]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_fg6ip")

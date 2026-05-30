@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func reload_level() -> void:
+	print("reload")
 	get_tree().reload_current_scene()
 
 func load_level() -> void:

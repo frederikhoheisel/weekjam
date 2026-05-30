@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drr1ke346rhgn" path="res://assets/textures/w.png" id="2_r2cn7"]
 [ext_resource type="Texture2D" uid="uid://4jud3r7a67s3" path="res://assets/textures/s.png" id="4_vbpn1"]
 [ext_resource type="Texture2D" uid="uid://b2d66g630prsk" path="res://assets/textures/d.png" id="5_r2cn7"]
+[ext_resource type="Texture2D" uid="uid://blrcm8etov3lu" path="res://assets/textures/r.png" id="6_0isw4"]
 
 [node name="Hud" type="CanvasLayer" unique_id=272555385]
 script = ExtResource("1_r2cn7")
@@ -51,3 +52,11 @@ anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_r2cn7")
+
+[node name="Reset" type="TextureRect" parent="." unique_id=324882851]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+offset_right = 96.0
+offset_bottom = 96.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_0isw4")
