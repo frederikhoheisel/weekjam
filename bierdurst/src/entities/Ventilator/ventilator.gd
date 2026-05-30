@@ -86,27 +86,27 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_wind =  true
 		if player_just_exited: 
-			print("player reentered, but just exited, false trigger")
+			#print("player reentered, but just exited, false trigger")
 			return
-		print("player entered")
-		print("player detected, reach: ", reach)
+		#print("player entered")
+		#print("player detected, reach: ", reach)
 		var block_distance: int = current_reach - (self.to_local(body.global_position).z) / 2
 		var direction: Vector3 = self.to_global(Vector3(0., 0., 1.0)) - self.global_position
-		print("blow_dist", block_distance)
+		#print("blow_dist", block_distance)
 		GameManager.blow_drone.emit(direction, block_distance)
 		
 func _on_drone_moved(dir: Vector3) -> void:
 	if player_in_wind:
 		for body in collison_area.get_overlapping_bodies():
 			if body.is_in_group("player") && player_in_wind:
-				print("player moved, still in area, reach: ", reach)
+				#print("player moved, still in area, reach: ", reach)
 				var block_distance: int = current_reach - (self.to_local(body.global_position).z / 2) + 1
 				var direction: Vector3 = self.to_global(Vector3(0., 0., 1.0)) - self.global_position
 				if dir.dot(direction) == 0: 
-					print("moved out of stream")
+					#print("moved out of stream")
 					return
 				if  dir.dot(direction) > 0:
-					print("player moved with stream")
+					#print("player moved with stream")
 					return
 				print("blow_dist", current_reach - self.to_local(body.global_position).z / 2)
 				GameManager.blow_drone.emit(direction, block_distance)
@@ -114,7 +114,7 @@ func _on_drone_moved(dir: Vector3) -> void:
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		print("player exited")
+		#print("player exited")
 		exit_timer.start()
 		player_just_exited = true
 		player_in_wind = false
