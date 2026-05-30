@@ -2,17 +2,20 @@ extends Node
 
 # Signals
 signal level_started(level_id: int)
+@warning_ignore("unused_signal")
 signal level_completed(level_id: int)
+@warning_ignore("unused_signal")
 signal game_over
-
+@warning_ignore("unused_signal")
 signal fridge_reached
+@warning_ignore("unused_signal")
 signal dude_reached
 
 signal blow_drone(dir: Vector3, block_dist: int)
 signal drone_moved(dir: Vector3)
 
 var current_level: Node = null
-var current_level_id: int = -1
+var current_level_id: int = 1
 
 
 # Called when the node enters the scene tree for the first time.

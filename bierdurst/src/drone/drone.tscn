@@ -168,5 +168,5 @@ draw_pass_1 = SubResource("QuadMesh_1or3r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16372254, 0)
 light_color = Color(1, 0.72156864, 0.52156866, 1)
 shadow_enabled = true
-omni_range = 4.0
+omni_range = 3.0
 omni_attenuation = 2.0

@@ -2,26 +2,96 @@
 
 [ext_resource type="Script" uid="uid://bokpbt7rjmb3i" path="res://src/ui/ui_key.gd" id="1_ipgl0"]
 [ext_resource type="Texture2D" uid="uid://dsgwax3lq5flq" path="res://assets/textures/a.png" id="2_ipgl0"]
-[ext_resource type="FontFile" uid="uid://d2c3najkvcj3w" path="res://assets/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_e2vu5"]
+[ext_resource type="FontFile" uid="uid://bjow1cnq2ff6k" path="res://assets/Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_ipgl0"]
+[ext_resource type="Texture2D" uid="uid://b82iqufm7yt3p" path="res://assets/textures/explosion-Sheet.png" id="4_khil1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ipgl0"]
-font = ExtResource("3_e2vu5")
-font_size = 32
+font = ExtResource("3_ipgl0")
+font_size = 48
 font_color = Color(0, 0, 0, 1)
-outline_size = 4
+outline_size = 8
 outline_color = Color(1, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2vu5"]
+atlas = ExtResource("4_khil1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk0j3"]
+atlas = ExtResource("4_khil1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grd8u"]
+atlas = ExtResource("4_khil1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhe4x"]
+atlas = ExtResource("4_khil1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgprq"]
+atlas = ExtResource("4_khil1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhg5f"]
+atlas = ExtResource("4_khil1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcp04"]
+atlas = ExtResource("4_khil1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bi3e"]
+atlas = ExtResource("4_khil1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbxsf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2vu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk0j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grd8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhe4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgprq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhg5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcp04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bi3e")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 30.0
+}]
 
 [node name="UIKey" type="HBoxContainer" unique_id=351766119]
 offset_right = 35.0
 offset_bottom = 23.0
-theme_override_constants/separation = -10
+theme_override_constants/separation = -22
 script = ExtResource("1_ipgl0")
 texture = ExtResource("2_ipgl0")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=44192279]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("2_ipgl0")
 expand_mode = 2
@@ -33,6 +103,16 @@ texture_filter = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "6x"
+text = "6"
 label_settings = SubResource("LabelSettings_ipgl0")
 vertical_alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1180010275]
+visible = false
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_fbxsf")
+animation = &"explode"
+frame = 7
+frame_progress = 1.0
+centered = false
