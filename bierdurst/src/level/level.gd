@@ -73,7 +73,7 @@ func check_and_move(pos: Vector3, id: int) -> void:
 	var cell_id: int = block_map.get_cell_item(pos)
 	#print("cell id:", cell_id)
 	player.animate(id)
-	var is_box: bool = check_for_box(pos)
+	var is_box: bool = check_for_box(pos, id)
 	if (cell_id == 0) or is_box: 
 		player.attempt_move(block_map.to_global(block_map.map_to_local(pos)))
 	else:

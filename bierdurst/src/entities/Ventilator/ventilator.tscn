@@ -139,7 +139,7 @@ script = ExtResource("1_pc43h")
 reach = 9
 
 [node name="RotorPivot" type="Node3D" parent="." unique_id=1191971095]
-transform = Transform3D(0.9227247, -0.38545835, 0, 0.38545835, 0.9227247, 0, 0, 0, 1, 0, 1.536701, 0)
+transform = Transform3D(0.45386168, 0.8910716, 0, -0.8910716, 0.45386168, 0, 0, 0, 1, 0, 1.536701, 0)
 
 [node name="Rotor" type="MeshInstance3D" parent="RotorPivot" unique_id=2087513930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0524, 0)
