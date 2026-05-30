@@ -9,10 +9,11 @@
 
 [sub_resource type="Environment" id="Environment_af42n"]
 
-[node name="Level" type="Node3D" unique_id=837621672 node_paths=PackedStringArray("player", "block_map", "hud")]
+[node name="Level" type="Node3D" unique_id=837621672 node_paths=PackedStringArray("player", "block_map", "dude", "hud")]
 script = ExtResource("1_7lnir")
 player = NodePath("Drone")
 block_map = NodePath("BlockMap")
+dude = NodePath("Dude")
 hud = NodePath("Hud")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1337180348]
@@ -38,6 +39,7 @@ unique_name_in_owner = true
 [node name="VentilatorContainer" type="Node" parent="." unique_id=463850112]
 
 [node name="Props" type="Node" parent="." unique_id=511500980]
+
 [node name="Dude" parent="." unique_id=1214129228 instance=ExtResource("6_w7y1s")]
 
 [node name="SecurityCamera" type="Camera3D" parent="." unique_id=4290299 groups=["SecCam"]]

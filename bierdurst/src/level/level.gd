@@ -17,7 +17,6 @@ class_name Level
 @onready var move_timer: Timer = $MoveTimer
 @onready var box_container: Node = %BoxContainer
 
-
 var player_grid_pos: Vector3
 var player_is_moving = false
 var player_is_blown = false
@@ -53,12 +52,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if player_is_moving: return
 	if Input.is_action_just_pressed("UP")  && moves_up > 0:
+		dude.type()
 		check_and_move(player_grid_pos + Vector3(0, 0, -1), 2)
 	if Input.is_action_just_pressed("LEFT") && moves_left > 0:
+		dude.type()
 		check_and_move(player_grid_pos + Vector3(-1, 0, 0), 3)
 	if Input.is_action_just_pressed("DOWN") && moves_down > 0:
+		dude.type()
 		check_and_move(player_grid_pos + Vector3(0, 0, 1), 0)
 	if Input.is_action_just_pressed("RIGHT") && moves_right > 0:
+		dude.type()
 		check_and_move(player_grid_pos + Vector3(1, 0, 0), 1)
 	#if (Vector3i(player_grid_pos) == block_map.local_to_map(block_map.to_local(fridge.global_position))):
 	#	got_beer = true
@@ -99,6 +102,7 @@ func check_and_move(pos: Vector3, id: int) -> void:
 	
 
 	if moves_up <= 0 and moves_left <= 0 and moves_down <= 0 and moves_right <= 0:
+		dude.hit_desk()
 		GameManager.game_over.emit()
 
 
@@ -135,6 +139,8 @@ func check_for_box(pos: Vector3, id: int) -> bool:
 
 func level_completed() -> void:
 	# TODO: celebtration schabernack, saufi
+	dude.drink_beer()
+	await get_tree().create_timer(2.0).timeout
 	GameManager.load_level()
 	
 func _on_fridge_reached() -> void:
@@ -144,8 +150,7 @@ func _on_fridge_reached() -> void:
 func _on_dude_reached() -> void:
 	if (got_beer == true):
 		# move to level_completed() later, the signal does nothing as of now
-		GameManager.level_completed.emit()
-		GameManager.load_level()
+		level_completed()
 
 func _on_blow_drone(dir: Vector3, dist: int) -> void:
 	if player_is_moving: await $MoveTimer.timeout
