@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="11_7637d"]
 [ext_resource type="PackedScene" uid="uid://dkkcxbc3en5eo" path="res://assets/models/tissue.glb" id="12_0j22y"]
 [ext_resource type="PackedScene" uid="uid://6ne4ev7fcehj" path="res://assets/models/banana.glb" id="14_66b86"]
+[ext_resource type="PackedScene" uid="uid://mwakpxo7bvv8" path="res://src/entities/poster/poster_eagle.tscn" id="15_5vdjf"]
+[ext_resource type="PackedScene" uid="uid://brm8183652ljx" path="res://src/entities/poster/poster_ramen.tscn" id="16_5vdjf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jq71y"]
 radius = 0.27490234
@@ -145,6 +147,8 @@ transform = Transform3D(1.05, 0, 0, 0, 0.075127326, -0.7549916, 0, 0.19610171, 0
 mesh = SubResource("ArrayMesh_y21jh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="objects/sofa/Cube_002" index="0" unique_id=858935550]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objects/sofa/Cube_002/StaticBody3D" index="0" unique_id=751731359]
 shape = SubResource("ConcavePolygonShape3D_imwje")
@@ -199,6 +203,14 @@ transform = Transform3D(0.094525345, 0, -0.99552244, 0, 1, 0, 0.99552244, 0, 0.0
 
 [node name="Dude" parent="." index="13" unique_id=1214129228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2797046, 1.6349247, 9.149855)
+[node name="PosterDxd" parent="objects" index="24" unique_id=1484927176 instance=ExtResource("14_0j22y")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.96726644, 3.3591762, -1.8904192)
+
+[node name="PosterEagle" parent="objects" index="25" unique_id=115866995 instance=ExtResource("15_5vdjf")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.1753402, 2.993506, 11.912379)
+
+[node name="PosterRamen" parent="objects" index="26" unique_id=113581564 instance=ExtResource("16_5vdjf")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, -9.873896, 2.945782, 6.05183)
 
 [node name="SecurityCamera" parent="." index="14" unique_id=4290299]
 transform = Transform3D(1, 0, 0, 0, 0.7309965, 0.6823812, 0, -0.6823812, 0.7309965, -3.3215528, 4.6966887, 10.984716)

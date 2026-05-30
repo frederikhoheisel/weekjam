@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://brm8183652ljx"]
+
+[ext_resource type="Texture2D" uid="uid://df1u6rx8rx8sa" path="res://assets/textures/poster6.png" id="1_hk0yg"]
+
+[node name="PosterRamen" type="Sprite3D" unique_id=113581564]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_hk0yg")
