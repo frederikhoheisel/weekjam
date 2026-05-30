@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxhfyjsqd0o06" path="res://assets/models/doll.glb" id="4_jq71y"]
 [ext_resource type="PackedScene" uid="uid://c7kol5rmyh15w" path="res://src/entities/fridge/fridge.tscn" id="5_3g2ip"]
 [ext_resource type="Texture2D" uid="uid://brrg1jhg8m2u8" path="res://assets/models/sofa_sofa.png" id="6_n7oai"]
+[ext_resource type="PackedScene" uid="uid://chmir6vmojyqq" path="res://src/entities/radio/radio.tscn" id="9_42dna"]
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="11_7637d"]
 [ext_resource type="PackedScene" uid="uid://dkkcxbc3en5eo" path="res://assets/models/tissue.glb" id="12_0j22y"]
 [ext_resource type="PackedScene" uid="uid://6ne4ev7fcehj" path="res://assets/models/banana.glb" id="14_66b86"]
@@ -202,3 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2797046, 1.6349247, 9.14985
 
 [node name="SecurityCamera" parent="." index="14" unique_id=4290299]
 transform = Transform3D(1, 0, 0, 0, 0.7309965, 0.6823812, 0, -0.6823812, 0.7309965, -3.3215528, 4.6966887, 10.984716)
+
+[node name="Radio" parent="." index="15" unique_id=432569425 instance=ExtResource("9_42dna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.402657, 0, 4.7471123)
