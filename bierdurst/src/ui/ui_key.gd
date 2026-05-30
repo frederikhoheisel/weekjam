@@ -47,6 +47,7 @@ func display(n: int) -> void:
 	await tween.finished
 	
 	if n <= 0:
+		GameManager.key_destroyed.emit()
 		texture = preload("res://assets/textures/kaputt.png")
 		label.hide()
 		animated_sprite_2d.show()

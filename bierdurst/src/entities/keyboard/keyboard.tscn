@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cue7hvdmpp770"]
+
+[ext_resource type="PackedScene" uid="uid://b71h33fippee" path="res://assets/models/keyboard.glb" id="1_dk6p5"]
+[ext_resource type="PackedScene" uid="uid://csjiun52i8c3i" path="res://src/entities/keyboard/explosion.tscn" id="2_d1tjm"]
+
+[node name="keyboard" unique_id=1261879449 instance=ExtResource("1_dk6p5")]
+
+[node name="Keyboard" parent="." index="0" unique_id=853305723]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.095, 0)
+
+[node name="Explosion" parent="." index="1" unique_id=632396884 instance=ExtResource("2_d1tjm")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223082, 1.6230904, 0.5467106)

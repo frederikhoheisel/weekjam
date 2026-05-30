@@ -10,6 +10,9 @@ signal game_over
 signal fridge_reached
 @warning_ignore("unused_signal")
 signal dude_reached
+@warning_ignore("unused_signal")
+signal key_destroyed
+
 
 signal blow_drone(dir: Vector3, block_dist: int)
 signal drone_moved(dir: Vector3)
