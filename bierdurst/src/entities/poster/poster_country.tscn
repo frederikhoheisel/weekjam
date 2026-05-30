@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4v3gcav7km8f"]
+
+[ext_resource type="Texture2D" uid="uid://c0vr7ivx3m5b1" path="res://assets/textures/poster3.png" id="1_qyqbr"]
+
+[node name="PosterCountry" type="Sprite3D" unique_id=1339597744]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_qyqbr")
