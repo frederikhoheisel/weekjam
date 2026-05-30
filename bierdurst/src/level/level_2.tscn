@@ -1,17 +1,12 @@
 [gd_scene format=4 uid="uid://s6c1pcwnsubg"]
 
 [ext_resource type="PackedScene" uid="uid://ef8forspnxic" path="res://src/level/level.tscn" id="1_t44r5"]
-[ext_resource type="PackedScene" uid="uid://dmsca2efntuq6" path="res://src/entities/box.tscn" id="2_p1dcq"]
-[ext_resource type="PackedScene" uid="uid://cwvyrbx08csjq" path="res://src/entities/monitor/monitor.tscn" id="3_26b72"]
+[ext_resource type="PackedScene" uid="uid://dwvk3m007lhxn" path="res://src/entities/box.tscn" id="2_p1dcq"]
 [ext_resource type="PackedScene" uid="uid://cxhfyjsqd0o06" path="res://assets/models/doll.glb" id="4_jq71y"]
 [ext_resource type="PackedScene" uid="uid://c7kol5rmyh15w" path="res://src/entities/fridge/fridge.tscn" id="5_3g2ip"]
 [ext_resource type="Texture2D" uid="uid://brrg1jhg8m2u8" path="res://assets/models/sofa_sofa.png" id="6_n7oai"]
-[ext_resource type="PackedScene" uid="uid://dcuxhhxv5i0j2" path="res://assets/models/table.glb" id="7_imwje"]
-[ext_resource type="PackedScene" uid="uid://ck6a0lywp0jmb" path="res://assets/models/mouse.glb" id="8_em1oq"]
-[ext_resource type="PackedScene" uid="uid://cue7hvdmpp770" path="res://src/entities/keyboard/keyboard.tscn" id="9_uuwma"]
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="11_7637d"]
 [ext_resource type="PackedScene" uid="uid://dkkcxbc3en5eo" path="res://assets/models/tissue.glb" id="12_0j22y"]
-[ext_resource type="PackedScene" uid="uid://d0l0jngi8hmmq" path="res://assets/models/tissue-box.glb" id="13_5vdjf"]
 [ext_resource type="PackedScene" uid="uid://6ne4ev7fcehj" path="res://assets/models/banana.glb" id="14_66b86"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jq71y"]
@@ -127,19 +122,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="8" unique_id=977363894]
 size = Vector3(50, 0.8, 50)
 
-[node name="Dude" parent="." index="9" unique_id=1214129228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2797046, 1.0330944, 9)
-
 [node name="Fridge" parent="." index="10" unique_id=2057293607 instance=ExtResource("5_3g2ip")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.965515, 0.5703412, -7.042493)
 
 [node name="objects" type="Node" parent="." index="11" unique_id=2097361328]
 
-[node name="Monitor" parent="objects" index="0" unique_id=495170575 node_paths=PackedStringArray("drone") instance=ExtResource("3_26b72")]
-transform = Transform3D(-0.3822802, 0, -0.9240464, 0, 1, 0, 0.9240464, 0, -0.3822802, 2.5887418, 2.6511388, 7.2016487)
-drone = NodePath("../../Drone")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="objects" index="1" unique_id=61894254]
+[node name="RigidBody3D" type="RigidBody3D" parent="objects" index="0" unique_id=61894254]
 transform = Transform3D(-0.55765826, -0.041257747, 0.8290447, -0.8300707, 0.027717788, -0.556969, 0, -0.998764, -0.049703896, -9.049543, 1.3871977, 5.902372)
 
 [node name="doll" parent="objects/RigidBody3D" index="0" unique_id=1337879411 instance=ExtResource("4_jq71y")]
@@ -149,7 +137,7 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.039886475, 0)
 shape = SubResource("CapsuleShape3D_jq71y")
 
-[node name="sofa" type="Node3D" parent="objects" index="2" unique_id=1673519917]
+[node name="sofa" type="Node3D" parent="objects" index="1" unique_id=1673519917]
 transform = Transform3D(2.9802322e-08, 0, 1.4999999, 0, 1.5, 0, -1.4999999, 0, 2.9802322e-08, -9, 1.2183657, 6)
 
 [node name="Cube_002" type="MeshInstance3D" parent="objects/sofa" index="0" unique_id=1038610275]
@@ -161,68 +149,56 @@ mesh = SubResource("ArrayMesh_y21jh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objects/sofa/Cube_002/StaticBody3D" index="0" unique_id=751731359]
 shape = SubResource("ConcavePolygonShape3D_imwje")
 
-[node name="table" parent="objects" index="3" unique_id=1680868732 instance=ExtResource("7_imwje")]
-transform = Transform3D(0.12201812, 0, -1.3946726, 0, 1.4, 0, 1.3946726, 0, 0.12201812, 2.3465319, 0.47309363, 7.922018)
-
-[node name="mouse" parent="objects" index="4" unique_id=1203662284 instance=ExtResource("8_em1oq")]
-transform = Transform3D(-0.42783397, 0, -1.9537036, 0, 2, 0, 1.9537036, 0, -0.42783397, 2.0636601, -0.11692333, 7.787446)
-
-[node name="keyboard2" parent="objects" index="5" unique_id=1261879449 instance=ExtResource("9_uuwma")]
-transform = Transform3D(-0.0844951, 0, -0.9964239, 0, 1, 0, 0.9964239, 0, -0.0844951, 2.017229, 0.3234067, 7.9161043)
-
-[node name="toiletpaper" parent="objects" index="6" unique_id=1344025232 instance=ExtResource("11_7637d")]
+[node name="toiletpaper" parent="objects" index="2" unique_id=1344025232 instance=ExtResource("11_7637d")]
 transform = Transform3D(1.1925594, 0, -0.9098362, 0, 1.4999999, 0, 0.9098362, 0, 1.1925594, -9.57375, 0.64811134, 8.21631)
 
-[node name="toiletpaper2" parent="objects" index="7" unique_id=294580846 instance=ExtResource("11_7637d")]
-transform = Transform3D(1.1925594, 0, -0.9098362, 0, 1.4999999, 0, 0.9098362, 0, 1.1925594, 1.2367167, 2.0108547, 7.011938)
-
-[node name="tissue" parent="objects" index="8" unique_id=1266374641 instance=ExtResource("12_0j22y")]
+[node name="tissue" parent="objects" index="3" unique_id=1266374641 instance=ExtResource("12_0j22y")]
 transform = Transform3D(-0.44353956, 0, -1.950198, 0, 2, 0, 1.950198, 0, -0.44353956, -0.5993067, 0.5072484, 6.7917585)
 
-[node name="tissue2" parent="objects" index="9" unique_id=62041286 instance=ExtResource("12_0j22y")]
+[node name="tissue2" parent="objects" index="4" unique_id=62041286 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, 4.7534757, 0.5072484, 9.511694)
 
-[node name="tissue3" parent="objects" index="10" unique_id=886891962 instance=ExtResource("12_0j22y")]
+[node name="tissue3" parent="objects" index="5" unique_id=886891962 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -4.8750224, 0.5072484, -3.511302)
 
-[node name="tissue4" parent="objects" index="11" unique_id=12000739 instance=ExtResource("12_0j22y")]
+[node name="tissue4" parent="objects" index="6" unique_id=12000739 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -3.3138168, 0.5072484, -5.93097)
 
-[node name="tissue5" parent="objects" index="12" unique_id=1370290410 instance=ExtResource("12_0j22y")]
+[node name="tissue5" parent="objects" index="7" unique_id=1370290410 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -0.961277, 0.5072484, -3.48907)
 
-[node name="tissue6" parent="objects" index="13" unique_id=1017565901 instance=ExtResource("12_0j22y")]
+[node name="tissue6" parent="objects" index="8" unique_id=1017565901 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -7.0563016, 0.50724936, 0.6793642)
 
-[node name="tissue7" parent="objects" index="14" unique_id=225346094 instance=ExtResource("12_0j22y")]
+[node name="tissue7" parent="objects" index="9" unique_id=225346094 instance=ExtResource("12_0j22y")]
 transform = Transform3D(-1.0550911, 1.1777439, -1.2246231, 0.76873714, 1.6164527, 0.89225775, 1.5151982, 0, -1.3054402, -7.1998777, 0.54054403, 5.1186123)
 
-[node name="tissue8" parent="objects" index="15" unique_id=1542818648 instance=ExtResource("12_0j22y")]
+[node name="tissue8" parent="objects" index="10" unique_id=1542818648 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -9.569553, 0.5072503, 10.730533)
 
-[node name="tissue9" parent="objects" index="16" unique_id=943480495 instance=ExtResource("12_0j22y")]
+[node name="tissue9" parent="objects" index="11" unique_id=943480495 instance=ExtResource("12_0j22y")]
 transform = Transform3D(0.5840423, 0, -1.9128237, 0, 2, 0, 1.9128237, 0, 0.5840423, -8.092327, 0.50725126, 4.444581)
 
-[node name="tissue10" parent="objects" index="17" unique_id=636157431 instance=ExtResource("12_0j22y")]
+[node name="tissue10" parent="objects" index="12" unique_id=636157431 instance=ExtResource("12_0j22y")]
 transform = Transform3D(1.7924777, 0, -0.88714355, 0, 2, 0, 0.88714355, 0, 1.7924777, -7.5492687, 0.50725126, 4.171276)
 
-[node name="tissue11" parent="objects" index="18" unique_id=1964393407 instance=ExtResource("12_0j22y")]
+[node name="tissue11" parent="objects" index="13" unique_id=1964393407 instance=ExtResource("12_0j22y")]
 transform = Transform3D(1.5641074, 0, -1.2464219, 0, 2, 0, 1.2464219, 0, 1.5641074, -9.57491, 0.50725317, 8.879541)
 
-[node name="tissue12" parent="objects" index="19" unique_id=1629650995 instance=ExtResource("12_0j22y")]
+[node name="tissue12" parent="objects" index="14" unique_id=1629650995 instance=ExtResource("12_0j22y")]
 transform = Transform3D(1.5641074, 0, -1.2464219, 0, 2, 0, 1.2464219, 0, 1.5641074, -8.486462, 0.50725317, 7.855098)
 
-[node name="tissue-box" parent="objects" index="20" unique_id=341856575 instance=ExtResource("13_5vdjf")]
-transform = Transform3D(-0.45906642, 0, -1.4280258, 0, 1.5, 0, 1.4280258, 0, -0.45906642, 1.7383895, 1.9844575, 6.9637675)
-
-[node name="banana" parent="objects" index="21" unique_id=200170294 instance=ExtResource("14_66b86")]
+[node name="banana" parent="objects" index="15" unique_id=200170294 instance=ExtResource("14_66b86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.033053, 0.70526123, 9.856578)
 
-[node name="banana2" parent="objects" index="22" unique_id=1751562910 instance=ExtResource("14_66b86")]
+[node name="banana2" parent="objects" index="16" unique_id=1751562910 instance=ExtResource("14_66b86")]
 transform = Transform3D(0.094525345, 0, -0.99552244, 0, 1, 0, 0.99552244, 0, 0.094525345, -3.8419278, 0.7052603, -3.5129805)
 
-[node name="banana3" parent="objects" index="23" unique_id=1645480918 instance=ExtResource("14_66b86")]
+[node name="banana3" parent="objects" index="17" unique_id=1645480918 instance=ExtResource("14_66b86")]
 transform = Transform3D(0.094525345, 0, -0.99552244, 0, 1, 0, 0.99552244, 0, 0.094525345, 4.665927, 0.70525837, 11.0149975)
 
-[node name="SecurityCamera" parent="." index="12" unique_id=4290299]
+[node name="Dude" parent="." index="13" unique_id=1214129228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2797046, 1.6349247, 9.149855)
+
+[node name="SecurityCamera" parent="." index="14" unique_id=4290299]
 transform = Transform3D(1, 0, 0, 0, 0.7309965, 0.6823812, 0, -0.6823812, 0.7309965, -3.3215528, 4.6966887, 10.984716)

@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export var drone: CharacterBody3D
+var drone: CharacterBody3D
 
 
 var blink_time: float = 0.8
@@ -18,6 +18,8 @@ func _ready() -> void:
 	GameManager.game_over.connect(func(): $Sprite3D.hide())
 	security_camera = get_tree().get_first_node_in_group("SecCam")
 	security_camera.call_deferred("reparent", $SubViewport)
+	
+	drone = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta: float) -> void:
