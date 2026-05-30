@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://cue7hvdmpp770" path="res://src/entities/keyboard/keyboard.tscn" id="11_yuodd"]
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="12_qtu07"]
 [ext_resource type="PackedScene" uid="uid://d0l0jngi8hmmq" path="res://assets/models/tissue-box.glb" id="13_8jdk1"]
+[ext_resource type="AudioStream" uid="uid://c1jdis6rdk25t" path="res://assets/sounds/beer1.wav" id="14_qtu07"]
+[ext_resource type="AudioStream" uid="uid://bcr3tdsw42tj5" path="res://assets/sounds/beer2.wav" id="15_8jdk1"]
+[ext_resource type="AudioStream" uid="uid://duuua3o6cdfir" path="res://assets/sounds/plitschplatsch.wav" id="16_74is2"]
+[ext_resource type="AudioStream" uid="uid://cblbli0mq7w6o" path="res://assets/sounds/burb.wav" id="17_m1htt"]
 
 [sub_resource type="Animation" id="Animation_hxgpv"]
 length = 0.001
@@ -153,7 +157,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_vr8j5"]
 resource_name = "drink_beer"
-length = 1.5
+length = 6.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,9 +165,9 @@ tracks/0/path = NodePath("Node3D/HeadPivot:rotation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.087, -0.11666667, 0.18124662, 0, 0),
-"times": PackedFloat32Array(0, 0.7)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.087, -0.11666667, 0.18124662, 0, 0, 1.087, -0.11666667, 0.18124662, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.0333333, 1.7333333, 4.0333333, 5.0333333)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,7 +176,7 @@ tracks/1/path = NodePath("Node3D/RightArmPivot/sterni:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(1.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -184,9 +188,9 @@ tracks/2/path = NodePath("Node3D/RightArmPivot:rotation:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(0.08843592, 0, 0, 0.5, 0, -1.1614766, -0.11685303, 0, 0.38314697, 0),
-"times": PackedFloat32Array(0, 0.7011182)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.08843592, 0, 0, 0.5, 0, -1.1614766, -0.11685303, 0, 0.38314697, 0, -1.1614766, -0.11685303, 0, 0.38314697, 0, 0.08843592, 0, 0, 0.5, 0),
+"times": PackedFloat32Array(1.0333333, 1.7344515, 4.0333333, 5.0333333)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -195,9 +199,9 @@ tracks/3/path = NodePath("Node3D/RightArmPivot:rotation:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(3.0814137, 0, 0, 0.5, 0, 4, -0.11685303, 0, 0.38314697, 0),
-"times": PackedFloat32Array(0, 0.7011182)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(3.0814137, 0, 0, 0.5, 0, 4, -0.11685303, 0, 0.38314697, 0, 4, -0.11685303, 0, 0.38314697, 0, 3.0814137, 0, 0, 0.5, 0),
+"times": PackedFloat32Array(1.0333333, 1.7344515, 4.0333333, 5.0333333)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -206,9 +210,9 @@ tracks/4/path = NodePath("Node3D/RightArmPivot:rotation:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(-7.517971e-09, 0, 0, 0.5, 0, -1.4117455, -0.11685303, 0, 0.38314697, 0),
-"times": PackedFloat32Array(0, 0.7011182)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-7.517971e-09, 0, 0, 0.5, 0, -1.4117455, -0.11685303, 0, 0.38314697, 0, -1.4117455, -0.11685303, 0, 0.38314697, 0, -7.517971e-09, 0, 0, 0.5, 0),
+"times": PackedFloat32Array(1.0333333, 1.7344515, 4.0333333, 5.0333333)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -217,9 +221,9 @@ tracks/5/path = NodePath("Node3D/RightArmPivot/sterni:rotation:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0.07161814, 0, 0, 0.11712613, -0.09263331, -0.48418173, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.70275676)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.07161814, 0, 0, 0.11712613, -0.09263331, -0.48418173, -0.25, 0, 0.25, 0, -0.48418173, -0.25, 0, 0.25, 0, 0.07161814, 0, 0, 0.11712613, -0.09263331),
+"times": PackedFloat32Array(1.0333333, 1.7360901, 4.0333333, 5.0333333)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -228,9 +232,9 @@ tracks/6/path = NodePath("Node3D/RightArmPivot/sterni:rotation:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(-1.376101, 0, 0, 0.11712613, -0.0154381795, -1.4687301, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.70275676)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.376101, 0, 0, 0.11712613, -0.0154381795, -1.4687301, -0.25, 0, 0.25, 0, -1.4687301, -0.25, 0, 0.25, 0, -1.376101, 0, 0, 0.11712613, -0.0154381795),
+"times": PackedFloat32Array(1.0333333, 1.7360901, 4.0333333, 5.0333333)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
@@ -239,9 +243,9 @@ tracks/7/path = NodePath("Node3D/RightArmPivot/sterni:rotation:z")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0.087102056, 0, 0, 0.11712613, 0.113749705, 0.7696003, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.70275676)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.087102056, 0, 0, 0.11712613, 0.113749705, 0.7696003, -0.25, 0, 0.25, 0, 0.7696003, -0.25, 0, 0.25, 0, 0.087102056, 0, 0, 0.11712613, 0.113749705),
+"times": PackedFloat32Array(1.0333333, 1.7360901, 4.0333333, 5.0333333)
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -250,10 +254,55 @@ tracks/8/path = NodePath("Node3D/RightArmPivot/sterni/GPUParticles3D:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.6997609),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.0333333, 1.7330942, 4.0333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BeerAudioStreamPlayer3D")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlatschAudioStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.7333333, 4.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FinischerAudioStreamPlayer3D")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4mdp8"]
@@ -536,6 +585,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mvefk")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_se21g"]
+streams_count = 2
+stream_0/stream = ExtResource("14_qtu07")
+stream_1/stream = ExtResource("15_8jdk1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yiyq3"]
+streams_count = 1
+stream_0/stream = ExtResource("16_74is2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_panoo"]
+streams_count = 1
+stream_0/stream = ExtResource("17_m1htt")
+
 [node name="Dude" type="Node3D" unique_id=1214129228]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 script = ExtResource("1_56uof")
@@ -618,6 +680,15 @@ transform = Transform3D(1.1925594, 0, -0.9098362, 0, 1.5, 0, 0.9098362, 0, 1.192
 
 [node name="tissue-box" parent="." unique_id=926942659 instance=ExtResource("13_8jdk1")]
 transform = Transform3D(-0.45906642, 0, -1.4280258, 0, 1.5, 0, 1.4280258, 0, -0.45906642, -0.6424447, 0.33893368, -2.1601143)
+
+[node name="BeerAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1602613259]
+stream = SubResource("AudioStreamRandomizer_se21g")
+
+[node name="PlatschAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1586870054]
+stream = SubResource("AudioStreamRandomizer_yiyq3")
+
+[node name="FinischerAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1357614366]
+stream = SubResource("AudioStreamRandomizer_panoo")
 
 [connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]

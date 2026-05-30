@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bt485icmge14s" path="res://assets/models/fridge_LowerFridgeDoorTexture.png" id="4_38f0u"]
 [ext_resource type="Texture2D" uid="uid://dmuiq5akbolen" path="res://assets/models/fridge_texture.png" id="5_mixjq"]
 [ext_resource type="PackedScene" uid="uid://mmgt05fv4ace" path="res://assets/models/sterni.glb" id="6_dljai"]
+[ext_resource type="AudioStream" uid="uid://hv5kusr0078p" path="res://assets/sounds/fridge_open1.wav" id="7_k01ww"]
+[ext_resource type="AudioStream" uid="uid://bkqgax7dof5qy" path="res://assets/sounds/fridge_open2.wav" id="8_a4g1h"]
+[ext_resource type="AudioStream" uid="uid://bbls63djkkpni" path="res://assets/sounds/fridge_close1.wav" id="9_wx0wp"]
+[ext_resource type="AudioStream" uid="uid://bqhp7fbsea0nj" path="res://assets/sounds/fridge_close2.wav" id="10_oyoyh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puoiu"]
 size = Vector3(1, 1, 1.5)
@@ -1375,6 +1379,16 @@ _data = {
 &"RESET": SubResource("Animation_dljai")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_igt6r"]
+streams_count = 2
+stream_0/stream = ExtResource("7_k01ww")
+stream_1/stream = ExtResource("8_a4g1h")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n6rta"]
+streams_count = 2
+stream_0/stream = ExtResource("9_wx0wp")
+stream_1/stream = ExtResource("10_oyoyh")
+
 [node name="Fridge" type="Node3D" unique_id=2057293607]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_13ch5")
@@ -1417,6 +1431,14 @@ omni_range = 1.0
 
 [node name="sterni" parent="." unique_id=1225203369 instance=ExtResource("6_dljai")]
 transform = Transform3D(-0.99915755, 0, -0.04103858, 0, 1, 0, 0.04103858, 0, -0.99915755, 0.041026935, 1.685455, 0.31287622)
+
+[node name="AudioStreamPlayer3Dopen" type="AudioStreamPlayer3D" parent="." unique_id=1354569285]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_igt6r")
+
+[node name="AudioStreamPlayer3Dclose" type="AudioStreamPlayer3D" parent="." unique_id=1368724202]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_n6rta")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
