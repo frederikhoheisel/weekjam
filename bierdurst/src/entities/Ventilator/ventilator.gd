@@ -10,9 +10,12 @@ var current_reach: int = 1
 @onready var wind_particles: GPUParticles3D = $GPUParticles3D2
 @onready var distance_check_ray: RayCast3D = $RayCast3D
 @onready var rotor_pivot: Node3D = $RotorPivot
-
+@onready var exit_timer: Timer = $Exit_Timer
 var rotation_speed: float
 var blocked_reach: float
+
+var player_in_wind: bool = false
+var player_just_exited: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +28,9 @@ func _ready() -> void:
 	distance_check_ray.target_position.z = reach * 2.0
 	if on: turn_on()
 	else: turn_off()
+	
+	# signals
+	GameManager.drone_moved.connect(_on_drone_moved)
 
 	
 
@@ -63,9 +69,7 @@ func check_obstacles() -> void:
 	var collider: Node3D = distance_check_ray.get_collider()
 	if collider != null && collider.is_in_group("wind_obstacle"):
 		var dist: float = to_local(distance_check_ray.get_collision_point()).length()
-		print("block dist ", dist)
 		var new_reach: int = dist / 2
-		print(new_reach)
 		update_reach(int(new_reach))
 	if collider == null:
 		update_reach(reach)
@@ -80,8 +84,42 @@ func update_reach(new_reach) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		print(reach)
-		var block_distance: int = current_reach - (self.to_local(body.global_position).z / 2)
+		player_in_wind =  true
+		if player_just_exited: 
+			print("player reentered, but just exited, false trigger")
+			return
+		print("player entered")
+		print("player detected, reach: ", reach)
+		var block_distance: int = current_reach - (self.to_local(body.global_position).z) / 2
 		var direction: Vector3 = self.to_global(Vector3(0., 0., 1.0)) - self.global_position
-		print("blow_dist", current_reach - self.to_local(body.global_position).z / 2)
+		print("blow_dist", block_distance)
 		GameManager.blow_drone.emit(direction, block_distance)
+		
+func _on_drone_moved(dir: Vector3) -> void:
+	if player_in_wind:
+		for body in collison_area.get_overlapping_bodies():
+			if body.is_in_group("player") && player_in_wind:
+				print("player moved, still in area, reach: ", reach)
+				var block_distance: int = current_reach - (self.to_local(body.global_position).z / 2) + 1
+				var direction: Vector3 = self.to_global(Vector3(0., 0., 1.0)) - self.global_position
+				if dir.dot(direction) == 0: 
+					print("moved out of stream")
+					return
+				if  dir.dot(direction) > 0:
+					print("player moved with stream")
+					return
+				print("blow_dist", current_reach - self.to_local(body.global_position).z / 2)
+				GameManager.blow_drone.emit(direction, block_distance)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("player exited")
+		exit_timer.start()
+		player_just_exited = true
+		player_in_wind = false
+		
+
+
+func _on_exit_timer_timeout() -> void:
+	player_just_exited = false

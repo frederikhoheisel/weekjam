@@ -139,7 +139,7 @@ script = ExtResource("1_pc43h")
 reach = 9
 
 [node name="RotorPivot" type="Node3D" parent="." unique_id=1191971095]
-transform = Transform3D(0.45004812, -0.893004, 0, 0.893004, 0.45004812, 0, 0, 0, 1, 0, 1.536701, 0)
+transform = Transform3D(0.9625222, 0.27120098, 0, -0.27120098, 0.9625222, 0, 0, 0, 1, 0, 1.536701, 0)
 
 [node name="Rotor" type="MeshInstance3D" parent="RotorPivot" unique_id=2087513930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0524, 0)
@@ -171,4 +171,9 @@ enabled = false
 target_position = Vector3(0, 0, 18)
 collision_mask = 2
 
+[node name="Exit_Timer" type="Timer" parent="." unique_id=1634496054]
+wait_time = 0.2
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Exit_Timer" to="." method="_on_exit_timer_timeout"]
