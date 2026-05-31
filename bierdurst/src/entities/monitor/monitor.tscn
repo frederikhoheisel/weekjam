@@ -162,7 +162,9 @@ horizontal_alignment = 1
 
 [node name="SoundSlider" type="HSlider" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=1319490797]
 layout_mode = 2
-value = 16.0
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="Label3" type="Label" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=165871289]
 layout_mode = 2
@@ -172,8 +174,11 @@ text = "Radio Volume"
 horizontal_alignment = 1
 
 [node name="RadioSlider" type="HSlider" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=1528796720]
+unique_name_in_owner = true
 layout_mode = 2
-value = 16.0
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="StationButton" type="Button" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=572243988]
 layout_mode = 2

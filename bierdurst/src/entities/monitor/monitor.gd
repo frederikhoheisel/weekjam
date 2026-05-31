@@ -53,9 +53,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			fpv_camera.clear_current()
 			security_camera.make_current()
 	
-	if event.is_action_pressed("open_settings"):
+	if event.is_action_pressed("open_settings") or event.is_action_pressed("ui_cancel"):
 		settings.visible = not settings.visible
-		crosshair.visible = settings.visible
+		#crosshair.visible = settings.visible
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if settings.visible else Input.MOUSE_MODE_CAPTURED)
+	
+	if event is InputEventMouseButton and not settings.visible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _input(event: InputEvent) -> void:
@@ -103,17 +107,20 @@ func _project_to_viewport(screen_pos: Vector2) -> Vector2:
 
 
 func _on_sound_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(0, value * 0.03)
+	AudioServer.set_bus_volume_linear(0, value)
 
 
 func _on_radio_slider_value_changed(value: float) -> void:
-	radio.set_volume(value * 0.03)
+	radio._set_radio_volume(value)
+	radio.set_volume(value)
 
 
 func _on_station_button_pressed() -> void:
 	radio.play_next()
+	%RadioSlider.value = 0.5
 
 
 func _on_return_button_pressed() -> void:
 	settings.hide()
-	crosshair.visible = settings.visible
+	#crosshair.visible = settings.visible
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

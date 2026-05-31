@@ -3,15 +3,17 @@ extends Node
 var radio_url = "https://your-radio-stream-url.com/stream"  # e.g. an Icecast/Shoutcast stream
 
 const STREAMS: Array[String] = [
-	"https://somafm.com/bootliquor",
-	"https://radio.plaza.one/mp3"
+	"https://radio.plaza.one/mp3",
+	"country",
+	"metal",
+	"classic"
 ]
 
-var current_station_id: int = 1
+var current_station_id: int = 0
 
 func _ready():
 	if OS.get_name() == "Web":
-		_start_radio()
+		_start_radio_with_effect()
 		play_station(current_station_id)
 
 
@@ -42,7 +44,7 @@ func _start_radio_with_effect():
 		    
 		    // 2. Low-pass filter — cuts the crisp high end
 		    var lowpass = ctx.createBiquadFilter();
-		    lowpass.type = 'lowpass';
+		    lowpass.type radioAudio= 'lowpass';
 		    lowpass.frequency.value = 2000;
 		    
 		    // 3. Distortion — cheap speaker crunch
@@ -80,35 +82,63 @@ func _start_radio_with_effect():
 		        return curve;
 		    }
 		""" % radio_url)
-	
+
+
 func set_volume(vol: float):
 	if OS.get_name() == "Web":
-		JavaScriptBridge.eval("if (window._radioAudio) window._radioAudio.volume = %f;" % vol)
+		JavaScriptBridge.eval("if (window._radio) window._radio.volume = %f;" % vol)
 
-# use when radio is playing with effects
+# use when radio is playSTATIONSing with effects
 func _set_radio_volume(linear_volume: float):
 	if OS.get_name() == "Web":
 		JavaScriptBridge.eval("""
             if (window._radioGain) window._radioGain.gain.value = %f * 1.4;
 		""" % linear_volume)
 
+
 func stop_radio():
 	if OS.get_name() == "Web":
-		JavaScriptBridge.eval("if (window._radioAudio) window._radioAudio.pause();")
+		JavaScriptBridge.eval("if (window._radio) window._radio.pause();")
 
 
 func play_next() -> void:
-	play_station((current_station_id + 1) % STREAMS.size())
+	current_station_id += 1
+	play_station(current_station_id % STREAMS.size())
 
 
 func play_station(id: int):
+	printt("playing", STREAMS[id], "id:", id)
 	if OS.get_name() == "Web":
 		var url = STREAMS[id]
-		JavaScriptBridge.eval("""
-            if (window._radio) { window._radio.pause(); }
-            window._radio = new Audio('%s');
-            window._radio.volume = 0.5;
-            window._radio.play().catch(() => {
-                document.addEventListener('click', () => window._radio.play(), { once: true });
-            });
-		""" % url)
+		if url.begins_with("http"):
+			_play_url(url)
+		else:
+			_fetch_and_play(url)
+
+func _play_url(url: String):
+	JavaScriptBridge.eval("""
+	    if (window._radio) window._radio.pause();
+	    window._radio = new Audio('%s');
+	    window._radio.crossOrigin = 'anonymous';
+	    window._radio.play().catch(() => {
+	        document.addEventListener('click', () => window._radio.play(), { once: true });
+	    });
+	""" % url)
+
+
+func _fetch_and_play(genre: String):
+	JavaScriptBridge.eval("""
+	    fetch('https://de1.api.radio-browser.info/json/stations/search?tag=%s&codec=MP3&lastcheckok=1&order=clickcount&reverse=true&limit=20&hidebroken=true')
+	        .then(r => r.json())
+	        .then(stations => {
+	            var station = stations.find(s => s.url_resolved && s.url_resolved.startsWith('https://'));
+	            if (!station) return;
+	            var url = station.url_resolved;
+	            if (window._radio) window._radio.pause();
+	            window._radio = new Audio(url);
+	            window._radio.crossOrigin = 'anonymous';
+	            window._radio.play().catch(() => {
+	                document.addEventListener('click', () => window._radio.play(), { once: true });
+	            });
+	        });
+	""" % genre)
