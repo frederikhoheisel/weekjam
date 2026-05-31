@@ -27,7 +27,7 @@ var boxes: Array
 
 func _ready() -> void:
 	AudioServer.set_bus_mute(0, true)
-	#block_map.visible = false
+	block_map.visible = false
 	player_grid_pos = block_map.local_to_map(block_map.to_local(player.global_position))
 	#print("player start pos: local:", player.position, ", grid:", player_grid_pos)
 	player.move_to(block_map.to_global(block_map.map_to_local(player_grid_pos)))

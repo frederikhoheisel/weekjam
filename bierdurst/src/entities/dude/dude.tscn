@@ -388,7 +388,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja0ro"]
-size = Vector3(7.1104736, 2, 5.9106445)
+size = Vector3(8, 2, 5.911)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxg4r"]
 resource_name = "Material.002"
