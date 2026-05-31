@@ -39,10 +39,6 @@ transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, -1.2595143, 0)
 
 [node name="SecurityCamera" type="Camera3D" parent="." unique_id=4290299 groups=["SecCam"]]
 
-[node name="GridMap" type="GridMap" parent="." unique_id=1886671177]
-
-mesh_library = ExtResource("5_em31m")
-
 [node name="BoxContainer" type="Node" parent="." unique_id=393386551]
 unique_name_in_owner = true
 
