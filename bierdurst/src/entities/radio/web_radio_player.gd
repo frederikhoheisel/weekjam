@@ -9,12 +9,11 @@ const STREAMS: Array[String] = [
 	"classic"
 ]
 
-var current_station_id: int = 0
 
 func _ready():
 	if OS.get_name() == "Web":
 		_start_radio_with_effect()
-		play_station(current_station_id)
+		play_station(GameManager.current_station_id)
 		set_volume(GameManager.radio_volume)
 		_set_radio_volume(GameManager.radio_volume)
 
@@ -104,8 +103,8 @@ func stop_radio():
 
 
 func play_next() -> void:
-	current_station_id += 1
-	play_station(current_station_id % STREAMS.size())
+	GameManager.current_station_id += 1
+	play_station(GameManager.current_station_id % STREAMS.size())
 
 
 func play_station(id: int):

@@ -21,6 +21,7 @@ var current_level: Node = null
 var current_level_id: int = -1
 
 var radio_volume: float = 0.25
+var current_station_id: int = 0
 
 var remaining_moves: int = 0
 
