@@ -20,7 +20,7 @@ func _ready() -> void:
 	light.omni_attenuation = attenuation
 	light.light_color = light_color
 	light.light_energy = energy
-	birne.mesh.surface_get_material(0).emission_color = emission_color
+	#birne.mesh.surface_get_material(0).emission_color = emission_color
 	
 func _process(delta: float) -> void:
 		if Engine.is_editor_hint():
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 				light.omni_attenuation = attenuation
 				light.light_color = light_color
 				light.light_energy = energy
-				birne.surface_get_material(0).emission_color = emission_color
+				#birne.surface_get_material(0).emission_color = emission_color
 		flicker_timer -= delta
 		if flicker_timer <= 0.0:
 			flicker_light()
