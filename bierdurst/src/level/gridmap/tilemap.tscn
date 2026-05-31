@@ -132,6 +132,34 @@ data = PackedVector3Array(1, 1, -0.91999996, -1.0799999, 1, -1.0799999, 1, 1, -1
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tmm7n"]
 data = PackedVector3Array(1, 1, -0.91999996, -1.0799999, 1, -1.0799999, 1, 1, -1.0799999, 1, 1, -0.91999996, -0.91999996, 1, -0.91999996, -1.0799999, 1, -1.0799999, -0.91999996, 1, -0.91999996, -1.0799999, 1, 1, -1.0799999, 1, -1.0799999, -0.91999996, 1, -0.91999996, -0.91999996, 1, 1, -1.0799999, 1, 1, -0.91999996, -1, 1, -1.0799999, 1, 1, -0.91999996, 1, 1, -0.91999996, -1, 1, -1.0799999, -1, 1, -1.0799999, 1, 1, -1.0799999, -1, -1.0799999, 1, 1, -1.0799999, -1.0799999, 1, -1.0799999, -1.0799999, -1, -1.0799999, 1, -1, -1.0799999, 1, 1, -1.0799999, 1, -1, -1.0799999, -0.91999996, -1, -0.91999996, 1, -1, -0.91999996, 1, -1, -1.0799999, -1.0799999, -1, -1.0799999, -0.91999996, -1, -0.91999996, -1.0799999, -1, -1.0799999, -0.91999996, -1, 1, -0.91999996, -1, -0.91999996, -1.0799999, -1, -1.0799999, -1.0799999, -1, 1, -0.91999996, -1, 1, -0.91999996, -1, -0.91999996, -0.91999996, 1, 1, -0.91999996, 1, -0.91999996, -0.91999996, -1, -0.91999996, -0.91999996, -1, 1, -0.91999996, 1, 1, 1, -1, -1.0799999, 1, 1, -0.91999996, 1, 1, -1.0799999, 1, -1, -1.0799999, 1, -1, -0.91999996, 1, 1, -0.91999996, 1, -1, -0.91999996, -0.91999996, 1, -0.91999996, 1, 1, -0.91999996, 1, -1, -0.91999996, -0.91999996, -1, -0.91999996, -0.91999996, 1, -0.91999996, -1.0799999, -1, 1, -1.0799999, 1, -1.0799999, -1.0799999, 1, 1, -1.0799999, -1, 1, -1.0799999, -1, -1.0799999, -1.0799999, 1, -1.0799999)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_43ksq"]
+load_path = "res://.godot/imported/floor_floor.png-840156174846bf020f036bf387d37500.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6svc"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.40392157, 0.3019608, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_43ksq")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bjnd2"]
+resource_name = "floor_Plane"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("AAAAAP///v8AAP///v8AAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_w6svc"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//VNX//wAAAABU1f//AAD//1TVAAAAAAAAVNVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yblac")
+
 [node name="Tilemap" type="Node3D" unique_id=921091762]
 
 [node name="floor" type="Node3D" parent="." unique_id=991655825]
@@ -177,3 +205,14 @@ mesh = SubResource("ArrayMesh_ym8te")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_corner2/WallCornerOuter/StaticBody3D" unique_id=669613561]
 shape = SubResource("ConcavePolygonShape3D_tmm7n")
+
+[node name="ceiling" type="Node3D" parent="." unique_id=119073597]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+
+[node name="Ceiling" type="MeshInstance3D" parent="ceiling" unique_id=1305772211]
+mesh = SubResource("ArrayMesh_bjnd2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ceiling/Ceiling" unique_id=328509796]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling/Ceiling/StaticBody3D" unique_id=1015466112]
+shape = SubResource("ConvexPolygonShape3D_w6svc")
