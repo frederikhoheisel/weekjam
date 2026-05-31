@@ -54,7 +54,7 @@ func rotate_drone() -> void:
 	tween = create_tween()
 	var dir: Vector3 = (drone.global_position - node_3d.global_position).normalized()
 	var angle: float = atan2(-dir.x, -dir.z)
-	tween.tween_property(node_3d, "rotation:y", node_3d.global_rotation.y + angle, 0.3)
+	tween.tween_property(node_3d, "global_rotation:y", angle, 0.4)
 
 
 
