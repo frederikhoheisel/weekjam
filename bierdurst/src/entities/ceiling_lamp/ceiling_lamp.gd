@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		flicker_timer -= delta
 		if flicker_timer <= 0.0:
 			flicker_light()
-			schedule_next_flicker(light)
+			schedule_next_flicker()
 
 
 func flicker_light():
@@ -64,5 +64,5 @@ func flicker_light():
 		tween.tween_property(light, "light_energy", 0.0, 0.06)
 		tween.tween_property(light, "light_energy", original_energy, 0.02)
 
-func schedule_next_flicker(light: Light3D):
+func schedule_next_flicker():
 	flicker_timer = randf_range(min_flicker_time, max_flicker_time)

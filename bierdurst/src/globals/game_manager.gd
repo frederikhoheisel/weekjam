@@ -18,7 +18,7 @@ signal blow_drone(dir: Vector3, block_dist: int)
 signal drone_moved(dir: Vector3)
 
 var current_level: Node = null
-var current_level_id: int = 1
+var current_level_id: int = 29
 
 
 # Called when the node enters the scene tree for the first time.
