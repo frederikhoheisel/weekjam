@@ -26,6 +26,7 @@ var box_pos_dict: Dictionary[Box, Vector3]
 var boxes: Array
 
 func _ready() -> void:
+	AudioServer.set_bus_mute(0, true)
 	#block_map.visible = false
 	player_grid_pos = block_map.local_to_map(block_map.to_local(player.global_position))
 	#print("player start pos: local:", player.position, ", grid:", player_grid_pos)
@@ -45,7 +46,9 @@ func _ready() -> void:
 	for box: Box in boxes:
 		var box_grid_pos = block_map.local_to_map(block_map.to_local(box.global_position))
 		box.move_to(block_map.to_global(block_map.map_to_local(box_grid_pos)))
-
+	
+	await get_tree().create_timer(1.0).timeout
+	AudioServer.set_bus_mute(0, false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -140,7 +143,8 @@ func check_for_box(pos: Vector3, id: int) -> bool:
 func level_completed() -> void:
 	# TODO: celebtration schabernack, saufi
 	dude.drink_beer()
-	await get_tree().create_timer(2.0).timeout
+	dude.rotate_drone()
+	await get_tree().create_timer(6.0).timeout
 	GameManager.load_level()
 	
 func _on_fridge_reached() -> void:

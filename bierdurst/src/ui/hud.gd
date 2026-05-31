@@ -10,6 +10,7 @@ var tween: Tween
 @onready var ui_key_s: UIKey = %UIKeyS
 @onready var ui_key_d: UIKey = %UIKeyD
 @onready var reset: TextureRect = $Reset
+@onready var key_audio_stream_player: AudioStreamPlayer = $KeyAudioStreamPlayer
 
 
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
+		key_audio_stream_player.play()
 		if tween:
 			tween.kill()
 		
@@ -40,16 +42,20 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func display_moves_up(amount: int) -> void:
+	key_audio_stream_player.play()
 	ui_key_w.display(amount)
 
 
 func display_moves_left(amount: int) -> void:
+	key_audio_stream_player.play()
 	ui_key_a.display(amount)
 
 
 func display_moves_down(amount: int) -> void:
+	key_audio_stream_player.play()
 	ui_key_s.display(amount)
 
 
 func display_moves_right(amount: int) -> void:
+	key_audio_stream_player.play()
 	ui_key_d.display(amount)

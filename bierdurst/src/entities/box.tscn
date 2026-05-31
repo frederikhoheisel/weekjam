@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://tm1uoh50f8i7" path="res://src/entities/box.gd" id="1_so2ac"]
 [ext_resource type="PackedScene" uid="uid://bm4tyeum2ute1" path="res://assets/models/box.glb" id="1_x68c1"]
+[ext_resource type="AudioStream" uid="uid://be3oy5qp3u1fy" path="res://assets/sounds/kiste2.wav" id="3_pp8lh"]
+[ext_resource type="AudioStream" uid="uid://vdai0sasw8ig" path="res://assets/sounds/kiste.wav" id="4_50hp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g548s"]
 
@@ -42,6 +44,11 @@ height = 0.4
 radial_segments = 8
 rings = 4
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g548s"]
+streams_count = 2
+stream_0/stream = ExtResource("3_pp8lh")
+stream_1/stream = ExtResource("4_50hp7")
+
 [node name="Box" type="StaticBody3D" unique_id=1054621522 groups=["wind_obstacle"]]
 collision_layer = 2
 collision_mask = 0
@@ -60,3 +67,6 @@ amount = 24
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_so2ac")
 draw_pass_1 = SubResource("SphereMesh_dylja")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1068750045]
+stream = SubResource("AudioStreamRandomizer_g548s")
