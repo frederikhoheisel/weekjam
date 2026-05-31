@@ -111,6 +111,7 @@ func _on_sound_slider_value_changed(value: float) -> void:
 
 
 func _on_radio_slider_value_changed(value: float) -> void:
+	GameManager.radio_volume = value
 	radio._set_radio_volume(value)
 	radio.set_volume(value)
 

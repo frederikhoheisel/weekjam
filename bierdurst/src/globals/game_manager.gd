@@ -20,6 +20,8 @@ signal drone_moved(dir: Vector3)
 var current_level: Node = null
 var current_level_id: int = -1
 
+var radio_volume: float = 0.5
+
 var remaining_moves: int = 0
 
 # Called when the node enters the scene tree for the first time.

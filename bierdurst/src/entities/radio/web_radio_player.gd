@@ -15,6 +15,8 @@ func _ready():
 	if OS.get_name() == "Web":
 		_start_radio_with_effect()
 		play_station(current_station_id)
+		set_volume(GameManager.radio_volume)
+		_set_radio_volume(GameManager.radio_volume)
 
 
 func _start_radio():
