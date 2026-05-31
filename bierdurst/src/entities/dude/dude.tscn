@@ -17,6 +17,17 @@
 [ext_resource type="AudioStream" uid="uid://bcr3tdsw42tj5" path="res://assets/sounds/beer2.wav" id="15_8jdk1"]
 [ext_resource type="AudioStream" uid="uid://duuua3o6cdfir" path="res://assets/sounds/plitschplatsch.wav" id="16_74is2"]
 [ext_resource type="AudioStream" uid="uid://cblbli0mq7w6o" path="res://assets/sounds/burb.wav" id="17_m1htt"]
+[ext_resource type="AudioStream" uid="uid://d3yjpr56gnww1" path="res://assets/sounds/boom1.wav" id="18_se21g"]
+[ext_resource type="AudioStream" uid="uid://c0v5t373v4gjy" path="res://assets/sounds/boom2.wav" id="19_yiyq3"]
+[ext_resource type="AudioStream" uid="uid://ca6mutaapbpnq" path="res://assets/sounds/boom3.wav" id="20_panoo"]
+[ext_resource type="AudioStream" uid="uid://bcpvk00djajx0" path="res://assets/sounds/boom4.wav" id="21_1cfjv"]
+[ext_resource type="AudioStream" uid="uid://cgoh1fwhlp0ay" path="res://assets/sounds/ahhh1.wav" id="22_jhwd4"]
+[ext_resource type="AudioStream" uid="uid://crgmxmnetr7d6" path="res://assets/sounds/rand1.wav" id="23_p6qjx"]
+[ext_resource type="AudioStream" uid="uid://bgry2cihdb0ye" path="res://assets/sounds/rand2.wav" id="24_mt1lx"]
+[ext_resource type="AudioStream" uid="uid://locis336qpp6" path="res://assets/sounds/idk3.wav" id="25_ntct3"]
+[ext_resource type="AudioStream" uid="uid://b4y0ldmcmyml2" path="res://assets/sounds/idk4.wav" id="26_vl7n0"]
+[ext_resource type="AudioStream" uid="uid://dn0v0vmaiyf3a" path="res://assets/sounds/freesound_community-small-explosion-103779.mp3" id="27_mt1lx"]
+[ext_resource type="AudioStream" uid="uid://xs1phlhbjplw" path="res://assets/sounds/freesound_community-small-explosion-106769.mp3" id="28_ntct3"]
 
 [sub_resource type="Animation" id="Animation_hxgpv"]
 length = 0.001
@@ -341,6 +352,20 @@ tracks/2/keys = {
 "points": PackedFloat32Array(-7.517971e-09, -0.25, 0, 0.25, 0, 0.049750753, -0.034210533, -0.008291793, 0, 0, 0.050614547, -0.007775123, -0.0001439657, 0, 0),
 "times": PackedFloat32Array(0, 0.2052632, 0.3)
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BoomAudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hw1la"]
 resource_name = "typing"
@@ -612,6 +637,26 @@ stream_0/stream = ExtResource("16_74is2")
 streams_count = 1
 stream_0/stream = ExtResource("17_m1htt")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q1hpp"]
+streams_count = 4
+stream_0/stream = ExtResource("18_se21g")
+stream_1/stream = ExtResource("19_yiyq3")
+stream_2/stream = ExtResource("20_panoo")
+stream_3/stream = ExtResource("21_1cfjv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hpqba"]
+streams_count = 5
+stream_0/stream = ExtResource("22_jhwd4")
+stream_1/stream = ExtResource("23_p6qjx")
+stream_2/stream = ExtResource("24_mt1lx")
+stream_3/stream = ExtResource("25_ntct3")
+stream_4/stream = ExtResource("26_vl7n0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vl7n0"]
+streams_count = 2
+stream_0/stream = ExtResource("27_mt1lx")
+stream_1/stream = ExtResource("28_ntct3")
+
 [node name="Dude" type="Node3D" unique_id=1214129228]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 script = ExtResource("1_56uof")
@@ -721,6 +766,18 @@ stream = SubResource("AudioStreamRandomizer_yiyq3")
 
 [node name="FinischerAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1357614366]
 stream = SubResource("AudioStreamRandomizer_panoo")
+
+[node name="BoomAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=289066923]
+transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0.79183894, 0.24780223, -1.4962851)
+stream = SubResource("AudioStreamRandomizer_q1hpp")
+
+[node name="GruntAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1931747553]
+transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0)
+stream = SubResource("AudioStreamRandomizer_hpqba")
+
+[node name="ExplosionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2131929859]
+transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0)
+stream = SubResource("AudioStreamRandomizer_vl7n0")
 
 [connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]

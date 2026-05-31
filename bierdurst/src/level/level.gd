@@ -21,8 +21,6 @@ var player_grid_pos: Vector3
 var player_is_moving = false
 var player_is_blown = false
 var got_beer: bool = false
-var box_dict: Dictionary[Box, Vector3i]
-var box_pos_dict: Dictionary[Box, Vector3]
 var boxes: Array
 
 func _ready() -> void:
@@ -30,7 +28,7 @@ func _ready() -> void:
 	
 	hud = get_tree().get_first_node_in_group("hud")
 	
-	#block_map.visible = false
+	block_map.visible = false
 	player_grid_pos = block_map.local_to_map(block_map.to_local(player.global_position))
 	#print("player start pos: local:", player.position, ", grid:", player_grid_pos)
 	player.move_to(block_map.to_global(block_map.map_to_local(player_grid_pos)))
@@ -114,7 +112,7 @@ func check_and_move(pos: Vector3, id: int) -> void:
 		GameManager.game_over.emit()
 
 
-func check_for_box(pos: Vector3, id: int) -> bool:
+func check_for_box(pos: Vector3, _id: int) -> bool:
 	var dir: Vector3 = (player.global_position - block_map.to_global(block_map.map_to_local(pos))).normalized()
 	var global_box_pos: Vector3 = block_map.to_global(block_map.map_to_local(pos))
 	for box: Box in boxes:
@@ -127,19 +125,6 @@ func check_for_box(pos: Vector3, id: int) -> bool:
 				if next_box_pos.is_equal_approx(next_box.global_position): return true
 			
 			box.move_to(next_box_pos)
-			match id:
-				2:
-					moves_up -= 1
-					hud.display_moves_up(moves_up)
-				3:
-					moves_left -= 1
-					hud.display_moves_left(moves_left)
-				0:
-					moves_down -= 1
-					hud.display_moves_down(moves_down)
-				1:
-					moves_right -= 1
-					hud.display_moves_right(moves_right)
 	
 	return false
 

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cjykn2vqbhvfr" path="res://assets/models/venti_VentiBody.png" id="1_ne4sx"]
 [ext_resource type="Script" uid="uid://ck2s41kvf3ofo" path="res://src/entities/Ventilator/ventilator.gd" id="1_pc43h"]
 [ext_resource type="Texture2D" uid="uid://c0lwbob6hgyrj" path="res://assets/models/venti_VentiBladesTex.png" id="2_pc43h"]
+[ext_resource type="AudioStream" uid="uid://8311nl73r1gt" path="res://assets/sounds/freesound_community-fanbuzz-74206.mp3" id="4_h01k5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uph71"]
 resource_name = "VentiBLadesMat"
@@ -139,7 +140,7 @@ script = ExtResource("1_pc43h")
 reach = 9
 
 [node name="RotorPivot" type="Node3D" parent="." unique_id=1191971095]
-transform = Transform3D(0.45386168, 0.8910716, 0, -0.8910716, 0.45386168, 0, 0, 0, 1, 0, 1.536701, 0)
+transform = Transform3D(0.9444927, 0.3285309, 0, -0.3285309, 0.9444927, 0, 0, 0, 1, 0, 1.536701, 0)
 
 [node name="Rotor" type="MeshInstance3D" parent="RotorPivot" unique_id=2087513930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0524, 0)
@@ -173,6 +174,11 @@ collision_mask = 2
 
 [node name="Exit_Timer" type="Timer" parent="." unique_id=1634496054]
 wait_time = 0.2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=457531005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("4_h01k5")
+autoplay = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
