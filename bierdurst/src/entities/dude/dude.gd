@@ -7,17 +7,32 @@ extends Node3D
 @onready var animation_player = $AnimationPlayer
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var node_3d: Node3D = $Node3D
+@onready var grunt_audio_stream_player_3d: AudioStreamPlayer3D = $GruntAudioStreamPlayer3D
+@onready var explosion_audio_stream_player_3d: AudioStreamPlayer3D = $ExplosionAudioStreamPlayer3D
+
 
 var thirsty: bool = true
 var player_here: bool = false
 var look_sensitivity: float = 0.001
 
 
-
-
 func _ready() -> void:
 	sterni.visible = false
-	
+	interval = randf_range(interval_min, interval_max)
+	GameManager.key_destroyed.connect(func(): explosion_audio_stream_player_3d.play())
+
+
+var interval: float
+var interval_min: float = 5.0
+var interval_max: float = 15.0
+var time: float = 0.0
+func _physics_process(delta: float) -> void:
+	time += delta
+	if time >= interval:
+		interval = randf_range(interval_min, interval_max)
+		time = 0.0
+		grunt_audio_stream_player_3d.play()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
