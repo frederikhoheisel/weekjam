@@ -46,15 +46,15 @@ albedo_color = Color(1, 1, 1, 0.60784316)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0mluk"]
 points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
 
-[node name="Tiles" type="Node3D" unique_id=282772184]
+[node name="Tiles" type="Node3D" unique_id=282772184 groups=["wind_obstacle"]]
 
-[node name="cube" type="Node3D" parent="." unique_id=1699703065]
+[node name="cube" type="Node3D" parent="." unique_id=1699703065 groups=["wind_obstacle"]]
 
-[node name="Cube" type="MeshInstance3D" parent="cube" unique_id=1263579907]
+[node name="Cube" type="MeshInstance3D" parent="cube" unique_id=1263579907 groups=["wind_obstacle"]]
 mesh = SubResource("ArrayMesh_v1wgy")
 surface_material_override/0 = SubResource("StandardMaterial3D_caacb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="cube/Cube" unique_id=1621308528]
+[node name="StaticBody3D" type="StaticBody3D" parent="cube/Cube" unique_id=1621308528 groups=["wind_obstacle"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cube/Cube/StaticBody3D" unique_id=1682362522]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cube/Cube/StaticBody3D" unique_id=1682362522 groups=["wind_obstacle"]]
 shape = SubResource("ConvexPolygonShape3D_0mluk")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ef8forspnxic" path="res://src/level/level.tscn" id="1_s1nj1"]
 [ext_resource type="PackedScene" uid="uid://dwvk3m007lhxn" path="res://src/entities/box.tscn" id="2_80t0c"]
 [ext_resource type="PackedScene" uid="uid://c72qa8yd76jmk" path="res://src/entities/Ventilator/ventilator.tscn" id="2_orbvy"]
+[ext_resource type="PackedScene" uid="uid://cboalft6d1ih6" path="res://src/entities/poster/poster_dxd.tscn" id="4_80t0c"]
 
 [node name="Level" unique_id=837621672 instance=ExtResource("1_s1nj1")]
 
@@ -14,14 +15,17 @@ data = {
 [node name="Drone" parent="." index="3" unique_id=1303569735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4018407, 0, 0)
 
-[node name="Fridge" parent="." index="6" unique_id=2057293607]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 2.314293, -1.2595143, 0)
+[node name="Fridge" parent="." index="6" unique_id=2057293607 groups=["wind_obstacle"]]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -3.0903971, -0.4546516, -8.518655)
 
 [node name="SecurityCamera" parent="." index="7" unique_id=4290299]
 transform = Transform3D(1, 0, 0, 0, 0.836554, 0.54788446, 0, -0.54788446, 0.836554, 0, 3.5092688, 0)
 
 [node name="Box" parent="BoxContainer" parent_id_path=PackedInt32Array(393386551) index="0" unique_id=1054621522 instance=ExtResource("2_80t0c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82117724, -5.835519, -9)
 
 [node name="Ventilator" parent="VentilatorContainer" parent_id_path=PackedInt32Array(463850112) index="0" unique_id=1413176500 instance=ExtResource("2_orbvy")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.0608668, -1.063343, -4.5441265)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.242379, -0.4595492, -6.159938)
+
+[node name="PosterDxd" parent="Props" parent_id_path=PackedInt32Array(511500980) index="0" unique_id=1484927176 groups=["wind_obstacle"] instance=ExtResource("4_80t0c")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.139878, 0.87389517, -9.479741)
