@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://dys14elfy6kxn" path="res://src/entities/monitor/monitor.gd" id="1_1rlq5"]
 [ext_resource type="Texture2D" uid="uid://cs4y3s6yyjupy" path="res://assets/models/monitor_monitor.png" id="1_uxyd6"]
 [ext_resource type="Shader" uid="uid://cui0t1ixt53g0" path="res://src/entities/monitor/monitor.gdshader" id="3_g021k"]
+[ext_resource type="PackedScene" uid="uid://ctkhmmshlpfx7" path="res://src/ui/hud.tscn" id="4_2ysw7"]
 [ext_resource type="Texture2D" uid="uid://dkht84lbp8rqy" path="res://assets/textures/cam_controlls.png" id="4_vyr2o"]
+[ext_resource type="FontFile" uid="uid://bic3d3wpjuh4l" path="res://assets/Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="5_uysyb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38jmb"]
 resource_name = "Material.003"
@@ -70,6 +72,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uysyb"]
+bg_color = Color(0, 0, 0, 0.6745098)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
 [node name="Monitor" type="Node3D" unique_id=495170575]
 script = ExtResource("1_1rlq5")
 
@@ -78,13 +91,13 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_kj1cx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1986650491]
-transform = Transform3D(0.074968785, -0.07325907, -0.42527258, -0.018075114, 0.43073046, -0.07738563, 0.43115768, 0.030795338, 0.070701316, 0.039121866, 0.20594966, -0.030926824)
-flip_h = true
+transform = Transform3D(-0.06600168, -0.058186233, 0.354236, 0.014734301, 0.35943085, 0.061784834, -0.35868052, 0.025472112, -0.062645786, 0.039121866, 0.20594966, -0.030926824)
 texture_filter = 0
 texture = SubResource("ViewportTexture_g021k")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=22765197]
-size = Vector2i(384, 256)
+size = Vector2i(461, 307)
+render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1329465155]
 material = SubResource("ShaderMaterial_vyr2o")
@@ -93,6 +106,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Hud" parent="SubViewport" unique_id=272555385 instance=ExtResource("4_2ysw7")]
+layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="SubViewport" unique_id=1376395656]
 texture_filter = 1
@@ -110,9 +126,75 @@ texture = SubResource("GradientTexture2D_g021k")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1729279, -0.7023314, 2.929141)
 
+[node name="Settings" type="CanvasLayer" parent="SubViewport" unique_id=1835233312]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="SubViewport/Settings" unique_id=1838938449]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uysyb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Settings/PanelContainer" unique_id=671419021]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=1875035893]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_uysyb")
+theme_override_font_sizes/font_size = 20
+text = "Music and Sound Settings"
+
+[node name="Label2" type="Label" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=410177384]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_uysyb")
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=1319490797]
+layout_mode = 2
+value = 16.0
+
+[node name="Label3" type="Label" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=165871289]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_uysyb")
+text = "Radio Volume"
+horizontal_alignment = 1
+
+[node name="RadioSlider" type="HSlider" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=1528796720]
+layout_mode = 2
+value = 16.0
+
+[node name="StationButton" type="Button" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=572243988]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_uysyb")
+text = "next Station"
+
+[node name="ReturnButton" type="Button" parent="SubViewport/Settings/PanelContainer/VBoxContainer" unique_id=483469350]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_uysyb")
+text = "Return"
+
 [node name="Sprite3D2" type="Sprite3D" parent="." unique_id=512945728]
 transform = Transform3D(0.1711616, -0.16725816, -0.97094196, -0.041267384, 0.9834029, -0.17667952, 0.9843783, 0.07030899, 0.16141853, 0.024627745, -0.39943165, -0.84386367)
 flip_h = true
 shaded = true
 texture_filter = 0
 texture = ExtResource("4_vyr2o")
+
+[connection signal="value_changed" from="SubViewport/Settings/PanelContainer/VBoxContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="value_changed" from="SubViewport/Settings/PanelContainer/VBoxContainer/RadioSlider" to="." method="_on_radio_slider_value_changed"]
+[connection signal="pressed" from="SubViewport/Settings/PanelContainer/VBoxContainer/StationButton" to="." method="_on_station_button_pressed"]
+[connection signal="pressed" from="SubViewport/Settings/PanelContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

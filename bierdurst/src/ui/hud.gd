@@ -19,26 +19,25 @@ func _ready() -> void:
 	ui_key_d.label.label_settings = ui_key_w.label.label_settings.duplicate()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset"):
-		key_audio_stream_player.play()
-		if tween:
-			tween.kill()
-		
-		tween = create_tween()
-		tween.set_parallel(true)
-		
-		reset.self_modulate = Color(1.0, 0.0, 0.0)
-		tween.tween_property(reset, "self_modulate", Color(1.0, 1.0, 1.0), 0.1)\
-				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-		
-		reset.custom_minimum_size = Vector2(128.0, 128.0)
-		tween.tween_property(reset, "custom_minimum_size", Vector2(96.0, 96.0), 0.1)\
-				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-		
-		await tween.finished
-		GameManager.current_level_id -= 1
-		GameManager.load_level()
+func reset_press() -> void:
+	key_audio_stream_player.play()
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.set_parallel(true)
+	
+	reset.self_modulate = Color(1.0, 0.0, 0.0)
+	tween.tween_property(reset, "self_modulate", Color(1.0, 1.0, 1.0), 0.1)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	
+	reset.custom_minimum_size = Vector2(96.0, 96.0)
+	tween.tween_property(reset, "custom_minimum_size", Vector2(64.0, 64.0), 0.1)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	
+	await tween.finished
+	GameManager.current_level_id -= 1
+	GameManager.load_level()
 
 
 func display_moves_up(amount: int) -> void:
