@@ -20,7 +20,7 @@ func _ready() -> void:
 	light.omni_attenuation = attenuation
 	light.light_color = light_color
 	light.light_energy = energy
-	#birne.mesh.surface_get_material(0).emission_color = emission_color
+	birne.get_active_material(0).emission = emission_color
 	
 func _process(delta: float) -> void:
 		if Engine.is_editor_hint():
@@ -28,41 +28,53 @@ func _process(delta: float) -> void:
 				light.omni_attenuation = attenuation
 				light.light_color = light_color
 				light.light_energy = energy
-				#birne.surface_get_material(0).emission_color = emission_color
+				birne.get_active_material(0).emission = emission_color
 		flicker_timer -= delta
 		if flicker_timer <= 0.0:
 			flicker_light()
-			schedule_next_flicker(light)
+			schedule_next_flicker()
 
 
 func flicker_light():
 	var tween = get_tree().create_tween()
+	tween.set_parallel(true)  # allows both tracks to run simultaneously
 	var original_energy = energy
-	
-	# Type of flicker (weighted probabilities)
-	var flicker_type = randf()
-	
-	if flicker_type < 0.6:  # 60% chance: quick double flicker
-		tween.tween_property(light, "light_energy", 0.0, 0.03)
-		tween.tween_property(light, "light_energy", 0.0, 0.08)
-		tween.tween_property(light, "light_energy", original_energy, 0.03)
-		tween.tween_property(light, "light_energy", original_energy, 0.15)
-		tween.tween_property(light, "light_energy", 0.0, 0.03)
-		tween.tween_property(light, "light_energy", 0.0, 0.05)
-		tween.tween_property(light, "light_energy", original_energy, 0.03)
-		
-	elif flicker_type < 0.85:  # 25% chance: struggling to turn on
-		for i in range(randi_range(3, 6)):
-			tween.tween_property(light, "light_energy", 0.0, 0.04)
-			tween.tween_property(light, "light_energy", 0.0, randf_range(0.08, 0.2))
-			tween.tween_property(light, "light_energy", original_energy * randf_range(0.3, 0.8), 0.04)
-			tween.tween_property(light, "light_energy", original_energy * randf_range(0.3, 0.8), 0.05)
-		tween.tween_property(light, "light_energy", original_energy, 0.05)
-		
-	else:  # 15% chance: single quick blink
-		tween.tween_property(light, "light_energy", 0.0, 0.02)
-		tween.tween_property(light, "light_energy", 0.0, 0.06)
-		tween.tween_property(light, "light_energy", original_energy, 0.02)
+	var mat = birne.get_active_material(0) as StandardMaterial3D
 
-func schedule_next_flicker(light: Light3D):
+	# Helper: tween both light and emission together
+	# We'll build two parallel tracks manually by calling set_parallel
+	# Instead, use a method that sets both at once:
+	
+	tween.set_parallel(false)  # sequential steps
+	
+	var flicker_type = randf()
+
+	if flicker_type < 0.6:  # 60%: quick double flicker
+		_flicker_step(tween, mat, 0.0, 0.03)
+		_flicker_step(tween, mat, 0.0, 0.08)
+		_flicker_step(tween, mat, original_energy, 0.03)
+		_flicker_step(tween, mat, original_energy, 0.15)
+		_flicker_step(tween, mat, 0.0, 0.03)
+		_flicker_step(tween, mat, 0.0, 0.05)
+		_flicker_step(tween, mat, original_energy, 0.03)
+
+	elif flicker_type < 0.85:  # 25%: struggling to turn on
+		for i in range(randi_range(3, 6)):
+			_flicker_step(tween, mat, 0.0, 0.04)
+			_flicker_step(tween, mat, 0.0, randf_range(0.08, 0.2))
+			_flicker_step(tween, mat, original_energy * randf_range(0.3, 0.8), 0.04)
+			_flicker_step(tween, mat, original_energy * randf_range(0.3, 0.8), 0.05)
+		_flicker_step(tween, mat, original_energy, 0.05)
+
+	else:  # 15%: single quick blink
+		_flicker_step(tween, mat, 0.0, 0.02)
+		_flicker_step(tween, mat, 0.0, 0.06)
+		_flicker_step(tween, mat, original_energy, 0.02)
+
+
+func _flicker_step(tween: Tween, mat: StandardMaterial3D, target_energy: float, duration: float) -> void:
+	tween.tween_property(light, "light_energy", target_energy, duration)
+	tween.tween_property(mat, "emission_energy_multiplier", target_energy, duration)
+
+func schedule_next_flicker():
 	flicker_timer = randf_range(min_flicker_time, max_flicker_time)

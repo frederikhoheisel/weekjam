@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bqhp7fbsea0nj" path="res://assets/sounds/fridge_close2.wav" id="10_oyoyh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_puoiu"]
-size = Vector3(1, 1, 1.5)
+size = Vector3(1, 1.5, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v18l"]
 resource_name = "Material"
@@ -1393,7 +1393,7 @@ stream_1/stream = ExtResource("10_oyoyh")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_13ch5")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1012721204]
+[node name="Area3D" type="Area3D" parent="." unique_id=1012721204 groups=["wind_obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70412207, 0.4347219)
 collision_layer = 0
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cv5pupirymf5m"]
+
+[ext_resource type="PackedScene" uid="uid://ef8forspnxic" path="res://src/level/level.tscn" id="1_s1nj1"]
+[ext_resource type="PackedScene" uid="uid://dwvk3m007lhxn" path="res://src/entities/box.tscn" id="2_80t0c"]
+[ext_resource type="PackedScene" uid="uid://c72qa8yd76jmk" path="res://src/entities/Ventilator/ventilator.tscn" id="2_orbvy"]
+[ext_resource type="PackedScene" uid="uid://cboalft6d1ih6" path="res://src/entities/poster/poster_dxd.tscn" id="4_80t0c"]
+
+[node name="Level" unique_id=837621672 instance=ExtResource("1_s1nj1")]
+
+[node name="BlockMap" parent="." index="1" unique_id=617607331 groups=["wind_obstacle"]]
+data = {
+"cells": PackedInt32Array(65533, 65535, 196608, 65533, 0, 196608, 65533, 65534, 196608, 65533, 65533, 196608, 65533, 65532, 196608, 65533, 65531, 196608, 65533, 65530, 196608, 65534, 65530, 196608, 65535, 65530, 196608, 0, 65530, 196608, 1, 65530, 196608, 2, 65530, 196608, 3, 65530, 196608, 3, 65531, 196608, 2, 65531, 196608, 2, 65532, 196608, 2, 65533, 196608, 2, 65534, 196608, 2, 65535, 196608)
+}
+
+[node name="Drone" parent="." index="3" unique_id=1303569735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4018407, 0, 0)
+
+[node name="Fridge" parent="." index="6" unique_id=2057293607 groups=["wind_obstacle"]]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -3.0903971, -0.4546516, -8.518655)
+
+[node name="SecurityCamera" parent="." index="7" unique_id=4290299]
+transform = Transform3D(1, 0, 0, 0, 0.836554, 0.54788446, 0, -0.54788446, 0.836554, 0, 3.5092688, 0)
+
+[node name="Box" parent="BoxContainer" parent_id_path=PackedInt32Array(393386551) index="0" unique_id=1054621522 instance=ExtResource("2_80t0c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82117724, -5.835519, -9)
+
+[node name="Ventilator" parent="VentilatorContainer" parent_id_path=PackedInt32Array(463850112) index="0" unique_id=1413176500 instance=ExtResource("2_orbvy")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.242379, -0.4595492, -6.159938)
+
+[node name="PosterDxd" parent="Props" parent_id_path=PackedInt32Array(511500980) index="0" unique_id=1484927176 groups=["wind_obstacle"] instance=ExtResource("4_80t0c")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.139878, 0.87389517, -9.479741)

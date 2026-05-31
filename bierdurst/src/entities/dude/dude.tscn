@@ -945,6 +945,7 @@ stream = SubResource("AudioStreamRandomizer_hpqba")
 [node name="ExplosionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2131929859]
 transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0)
 stream = SubResource("AudioStreamRandomizer_vl7n0")
+volume_db = -6.0
 
 [connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]
