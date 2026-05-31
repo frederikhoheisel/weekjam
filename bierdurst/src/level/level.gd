@@ -12,11 +12,11 @@ class_name Level
 @export var fridge: Node3D
 @export var dude: Node3D
 
-@export var hud: HUD
-
 @onready var move_timer: Timer = $MoveTimer
 @onready var box_container: Node = %BoxContainer
 
+
+var hud: HUD
 var player_grid_pos: Vector3
 var player_is_moving = false
 var player_is_blown = false
@@ -27,7 +27,10 @@ var boxes: Array
 
 func _ready() -> void:
 	AudioServer.set_bus_mute(0, true)
-	block_map.visible = false
+	
+	hud = get_tree().get_first_node_in_group("hud")
+	
+	#block_map.visible = false
 	player_grid_pos = block_map.local_to_map(block_map.to_local(player.global_position))
 	#print("player start pos: local:", player.position, ", grid:", player_grid_pos)
 	player.move_to(block_map.to_global(block_map.map_to_local(player_grid_pos)))
@@ -66,6 +69,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("RIGHT") && moves_right > 0:
 		dude.type()
 		check_and_move(player_grid_pos + Vector3(1, 0, 0), 1)
+	if Input.is_action_just_pressed("reset"):
+		hud.reset_press()
 	#if (Vector3i(player_grid_pos) == block_map.local_to_map(block_map.to_local(fridge.global_position))):
 	#	got_beer = true
 	

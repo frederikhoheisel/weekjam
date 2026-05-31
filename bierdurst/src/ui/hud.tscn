@@ -18,16 +18,16 @@ stream_1/stream = ExtResource("8_je3ri")
 stream_2/stream = ExtResource("9_k5qe1")
 stream_3/stream = ExtResource("10_fwgqd")
 
-[node name="Hud" type="CanvasLayer" unique_id=272555385]
+[node name="Hud" type="CanvasLayer" unique_id=272555385 groups=["hud"]]
 script = ExtResource("1_r2cn7")
 
 [node name="UIKeyW" parent="." unique_id=699389501 instance=ExtResource("1_i4jpw")]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.12
-anchor_top = 0.8
-anchor_right = 0.12
-anchor_bottom = 0.85
+anchor_left = 0.15
+anchor_top = 0.72
+anchor_right = 0.15
+anchor_bottom = 0.72
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_r2cn7")
@@ -35,20 +35,20 @@ texture = ExtResource("2_r2cn7")
 [node name="UIKeyA" parent="." unique_id=239208211 instance=ExtResource("1_i4jpw")]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.92
-anchor_right = 0.05
-anchor_bottom = 0.92
+anchor_left = 0.04
+anchor_top = 0.87
+anchor_right = 0.04
+anchor_bottom = 0.87
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UIKeyS" parent="." unique_id=50984587 instance=ExtResource("1_i4jpw")]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.12
-anchor_top = 0.92
-anchor_right = 0.12
-anchor_bottom = 0.92
+anchor_left = 0.15
+anchor_top = 0.87
+anchor_right = 0.15
+anchor_bottom = 0.87
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_vbpn1")
@@ -56,19 +56,22 @@ texture = ExtResource("4_vbpn1")
 [node name="UIKeyD" parent="." unique_id=762324131 instance=ExtResource("1_i4jpw")]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.19
-anchor_top = 0.92
-anchor_right = 0.19
-anchor_bottom = 0.92
+anchor_left = 0.26
+anchor_top = 0.87
+anchor_right = 0.26
+anchor_bottom = 0.87
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_r2cn7")
 
 [node name="Reset" type="TextureRect" parent="." unique_id=324882851]
 texture_filter = 1
-custom_minimum_size = Vector2(96, 96)
-offset_right = 96.0
-offset_bottom = 96.0
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.02
+anchor_bottom = 0.02
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_0isw4")
 

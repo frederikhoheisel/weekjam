@@ -36,12 +36,12 @@ func display(n: int) -> void:
 	tween.tween_property(texture_rect, "self_modulate", Color(1.0, 1.0, 1.0), 0.1)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	
-	texture_rect.custom_minimum_size = Vector2(128.0, 128.0)
-	tween.tween_property(texture_rect, "custom_minimum_size", Vector2(96.0, 96.0), 0.1)\
+	texture_rect.custom_minimum_size = Vector2(96.0, 96.0)
+	tween.tween_property(texture_rect, "custom_minimum_size", Vector2(64.0, 64.0), 0.1)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	
-	label.label_settings.font_size = 64
-	tween.tween_property(label.label_settings, "font_size", 48, 0.1)\
+	label.label_settings.font_size = 48
+	tween.tween_property(label.label_settings, "font_size", 32, 0.1)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	
 	await tween.finished

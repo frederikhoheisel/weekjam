@@ -388,7 +388,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja0ro"]
-size = Vector3(8, 2, 5.911)
+size = Vector3(8, 2, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxg4r"]
 resource_name = "Material.002"
@@ -585,6 +585,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mvefk")
 
+[sub_resource type="Gradient" id="Gradient_qtu07"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.20080322, 0.31325302)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8jdk1"]
+gradient = SubResource("Gradient_qtu07")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+metadata/_snap_enabled = true
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_se21g"]
 streams_count = 2
 stream_0/stream = ExtResource("14_qtu07")
@@ -611,7 +625,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 [node name="Area3D" type="Area3D" parent="Node3D" unique_id=993461577]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" unique_id=837806599]
-transform = Transform3D(0.9999985, 0, 0, 0, 0.9999985, 0, 0, 0, 0.9999985, 0.06784037, 0.011395678, -0.38478696)
+transform = Transform3D(0.9999985, 0, 0, 0, 0.9999985, 0, 0, 0, 0.9999985, 0, 0, 1)
 shape = SubResource("BoxShape3D_ja0ro")
 
 [node name="chair" parent="Node3D" unique_id=1501691495 instance=ExtResource("2_qlmkw")]
@@ -662,6 +676,24 @@ unique_name_in_owner = true
 transform = Transform3D(2.0408163, 0, 0, 0, 2.0408163, 0, 0, 0, 2.0408163, -0.020995928, 0.17763901, 0.041199833)
 cull_mask = 1048573
 fov = 47.9
+
+[node name="Crosshair" type="CanvasLayer" parent="Node3D/HeadPivot/Camera3D" unique_id=2103388075 groups=["Crosshair"]]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Node3D/HeadPivot/Camera3D/Crosshair" unique_id=979357939]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8jdk1")
 
 [node name="Monitor" parent="." unique_id=495170575 instance=ExtResource("8_rg74y")]
 transform = Transform3D(-0.3822802, 0, -0.9240464, 0, 1, 0, 0.9240464, 0, -0.3822802, 0.20790786, 1.005615, -1.9222338)

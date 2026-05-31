@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dwvk3m007lhxn" path="res://src/entities/box.tscn" id="2_p1dcq"]
 [ext_resource type="PackedScene" uid="uid://cxhfyjsqd0o06" path="res://assets/models/doll.glb" id="4_jq71y"]
 [ext_resource type="Texture2D" uid="uid://brrg1jhg8m2u8" path="res://assets/models/sofa_sofa.png" id="6_n7oai"]
-[ext_resource type="PackedScene" uid="uid://chmir6vmojyqq" path="res://src/entities/radio/radio.tscn" id="9_42dna"]
 [ext_resource type="PackedScene" uid="uid://cqidokspouhel" path="res://assets/models/toiletpaper.glb" id="11_7637d"]
 [ext_resource type="PackedScene" uid="uid://cboalft6d1ih6" path="res://src/entities/poster/poster_dxd.tscn" id="11_em1oq"]
 [ext_resource type="PackedScene" uid="uid://dkkcxbc3en5eo" path="res://assets/models/tissue.glb" id="12_0j22y"]

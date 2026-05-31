@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://chmir6vmojyqq"]
 
 [ext_resource type="Script" uid="uid://c2cldxejd7duk" path="res://src/entities/radio/web_radio_player.gd" id="1_5266m"]
+[ext_resource type="PackedScene" uid="uid://ds6pdv2x7hden" path="res://assets/models/radio.glb" id="2_ffjwm"]
 
-[node name="Radio" type="Node3D" unique_id=432569425]
+[node name="Radio" type="Node3D" unique_id=432569425 groups=["radio"]]
 script = ExtResource("1_5266m")
+
+[node name="radio" parent="." unique_id=1807147110 instance=ExtResource("2_ffjwm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

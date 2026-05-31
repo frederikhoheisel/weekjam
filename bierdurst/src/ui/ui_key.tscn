@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ipgl0"]
 font = ExtResource("3_ipgl0")
-font_size = 48
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 outline_size = 8
 outline_color = Color(1, 1, 0, 1)
@@ -91,7 +91,7 @@ texture = ExtResource("2_ipgl0")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=44192279]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_ipgl0")
 expand_mode = 2

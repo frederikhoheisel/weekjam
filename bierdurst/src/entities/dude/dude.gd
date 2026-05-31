@@ -20,12 +20,6 @@ func _ready() -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * look_sensitivity)
 		#self.rotation.y = clamp(camera_3d.rotation.y, deg_to_rad(-90.0), deg_to_rad(90.0))
@@ -41,7 +35,8 @@ func rotate_drone() -> void:
 	
 	tween = create_tween()
 	var dir: Vector3 = (drone.global_position - node_3d.global_position).normalized()
-	tween.tween_property(node_3d, "rotate_y", 1.0 - dir.dot(node_3d.global_basis.z), 0.3)
+	var angle: float = atan2(-dir.x, -dir.z)
+	tween.tween_property(node_3d, "rotation:y", node_3d.global_rotation.y + angle, 0.3)
 
 
 
