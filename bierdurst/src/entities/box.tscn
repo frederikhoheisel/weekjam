@@ -55,7 +55,7 @@ collision_mask = 0
 script = ExtResource("1_so2ac")
 
 [node name="box" parent="." unique_id=2103103828 instance=ExtResource("1_x68c1")]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=164678541]
 shape = SubResource("BoxShape3D_g548s")

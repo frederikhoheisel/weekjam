@@ -316,6 +316,172 @@ tracks/11/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_mt1lx"]
+resource_name = "drink_beer_end"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/HeadPivot:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.087, -0.11666667, 0.18124662, 0, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/RightArmPivot/sterni:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.07161814, -0.25, 0, 0.25, 0, -0.48418173, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D/RightArmPivot/sterni:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.376101, -0.25, 0, 0.25, 0, -1.4687301, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node3D/RightArmPivot/sterni:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.087102056, -0.25, 0, 0.25, 0, 0.7696003, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node3D/RightArmPivot/sterni:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node3D/RightArmPivot:rotation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.08843592, -0.25, 0, 0.25, 0, -1.1614766, -0.11685303, 0, 0.38314697, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node3D/RightArmPivot:rotation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.0814137, -0.25, 0, 0.25, 0, 4, -0.11685303, 0, 0.38314697, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node3D/RightArmPivot:rotation:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-7.517971e-09, -0.25, 0, 0.25, 0, -1.4117455, -0.11685303, 0, 0.38314697, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node3D/RightArmPivot/sterni/GPUParticles3D:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BeerAudioStreamPlayer3D")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlatschAudioStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.9666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node3D/LeftArmPivot:rotation:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.08691738, -0.25, 0, 0.25, 0, 0.8765218, -0.165, -0.13160075, 0, 0),
+"times": PackedFloat32Array(0, 0.99)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node3D/LeftArmPivot:rotation:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(3.1415925, -0.25, 0, 0.25, 0, 3.1415925, -0.165, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.99)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node3D/LeftArmPivot:rotation:z")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-1.5586629e-08, -0.25, 0, 0.25, 0, -1.8316025e-07, -0.165, 2.792894e-08, 0, 0),
+"times": PackedFloat32Array(0, 0.99)
+}
+
 [sub_resource type="Animation" id="Animation_4mdp8"]
 resource_name = "hit_desk"
 length = 0.3
@@ -408,6 +574,7 @@ tracks/2/keys = {
 _data = {
 &"RESET": SubResource("Animation_hxgpv"),
 &"drink_beer": SubResource("Animation_vr8j5"),
+&"drink_beer_end": SubResource("Animation_mt1lx"),
 &"hit_desk": SubResource("Animation_4mdp8"),
 &"typing": SubResource("Animation_hw1la")
 }
@@ -702,7 +869,7 @@ process_material = SubResource("ParticleProcessMaterial_hxgpv")
 draw_pass_1 = SubResource("QuadMesh_hw1la")
 
 [node name="LeftArmPivot" type="Node3D" parent="Node3D" unique_id=837618464]
-transform = Transform3D(-1, -2.4789875e-09, 1.5042579e-07, -1.552779e-08, 0.996225, -0.08680797, -1.4964276e-07, -0.08680797, -0.996225, -0.7401073, 0.995623, -0.041391466)
+transform = Transform3D(-0.99999994, -2.4789875e-09, 1.5042579e-07, -1.5527789e-08, 0.996225, -0.08680797, -1.4964274e-07, -0.08680797, -0.996225, -0.7401073, 0.99562293, -0.041391466)
 
 [node name="LeftArm" type="MeshInstance3D" parent="Node3D/LeftArmPivot" unique_id=989604723]
 transform = Transform3D(-0.26933324, -3.888648e-09, 0.24464364, -0.028182425, 0.24869683, -0.21461959, 0.08864579, 0.07906612, 0.67507064, 0.23813093, -0.17237568, 0.4970109)

@@ -52,9 +52,12 @@ func _ready() -> void:
 	AudioServer.set_bus_mute(0, false)
 
 
+var movement_disabled: bool = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if player_is_moving: return
+	if Input.is_action_just_pressed("reset"):
+		hud.reset_press()
+	if player_is_moving or movement_disabled: return
 	if Input.is_action_just_pressed("UP")  && moves_up > 0:
 		dude.type()
 		check_and_move(player_grid_pos + Vector3(0, 0, -1), 2)
@@ -67,8 +70,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("RIGHT") && moves_right > 0:
 		dude.type()
 		check_and_move(player_grid_pos + Vector3(1, 0, 0), 1)
-	if Input.is_action_just_pressed("reset"):
-		hud.reset_press()
 	#if (Vector3i(player_grid_pos) == block_map.local_to_map(block_map.to_local(fridge.global_position))):
 	#	got_beer = true
 	
@@ -108,6 +109,8 @@ func check_and_move(pos: Vector3, id: int) -> void:
 	
 
 	if moves_up <= 0 and moves_left <= 0 and moves_down <= 0 and moves_right <= 0:
+		if movement_disabled:
+			return
 		dude.hit_desk()
 		GameManager.game_over.emit()
 
@@ -129,9 +132,11 @@ func check_for_box(pos: Vector3, _id: int) -> bool:
 	return false
 
 
-
 func level_completed() -> void:
 	# TODO: celebtration schabernack, saufi
+	GameManager.remaining_moves += moves_up + moves_left + moves_down + moves_right
+	GameManager.level_completed.emit()
+	movement_disabled = true
 	dude.drink_beer()
 	dude.rotate_drone()
 	await get_tree().create_timer(6.0).timeout
@@ -153,7 +158,14 @@ func _on_blow_drone(dir: Vector3, dist: int) -> void:
 	move_timer.wait_time = 0.4
 	move_timer.start()
 	player_grid_pos += dir * dist
+	player_grid_pos = Vector3(round(player_grid_pos.x), round(player_grid_pos.y), round(player_grid_pos.z))
 	player.move_to(block_map.to_global(block_map.map_to_local(player_grid_pos)))
 
 func _on_move_timer_timeout() -> void:
 	player_is_moving = false
+
+
+func last_level() -> void:
+	$Camera3D.make_current()
+	$Dude/AnimationPlayer.play("drink_beer_end")
+	%movesMesh.mesh.text = "remaining moves: " + str(GameManager.remaining_moves)
