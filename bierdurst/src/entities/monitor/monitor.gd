@@ -107,18 +107,20 @@ func _project_to_viewport(screen_pos: Vector2) -> Vector2:
 
 
 func _on_sound_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(0, value)
+	AudioServer.set_bus_volume_linear(0, value * 0.5)
 
 
 func _on_radio_slider_value_changed(value: float) -> void:
-	GameManager.radio_volume = value
-	radio._set_radio_volume(value)
-	radio.set_volume(value)
+	GameManager.radio_volume = value  * 0.5
+	radio._set_radio_volume(value * 0.5)
+	radio.set_volume(value * 0.5)
 
 
 func _on_station_button_pressed() -> void:
 	radio.play_next()
-	%RadioSlider.value = 0.5
+	%RadioSlider.value = GameManager.radio_volume * 2.0
+	radio._set_radio_volume(GameManager.radio_volume)
+	radio.set_volume(GameManager.radio_volume)
 
 
 func _on_return_button_pressed() -> void:

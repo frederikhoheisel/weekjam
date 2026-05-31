@@ -20,7 +20,7 @@ signal drone_moved(dir: Vector3)
 var current_level: Node = null
 var current_level_id: int = -1
 
-var radio_volume: float = 0.5
+var radio_volume: float = 0.25
 
 var remaining_moves: int = 0
 

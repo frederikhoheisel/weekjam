@@ -121,11 +121,12 @@ func _play_url(url: String):
 	JavaScriptBridge.eval("""
 	    if (window._radio) window._radio.pause();
 	    window._radio = new Audio('%s');
+		window._radio.volume = %f;
 	    window._radio.crossOrigin = 'anonymous';
 	    window._radio.play().catch(() => {
 	        document.addEventListener('click', () => window._radio.play(), { once: true });
 	    });
-	""" % url)
+	""" % [url, GameManager.radio_volume])
 
 
 func _fetch_and_play(genre: String):
@@ -139,8 +140,9 @@ func _fetch_and_play(genre: String):
 	            if (window._radio) window._radio.pause();
 	            window._radio = new Audio(url);
 	            window._radio.crossOrigin = 'anonymous';
+				window._radio.volume = %f;
 	            window._radio.play().catch(() => {
 	                document.addEventListener('click', () => window._radio.play(), { once: true });
 	            });
 	        });
-	""" % genre)
+	""" % [genre, GameManager.radio_volume])
