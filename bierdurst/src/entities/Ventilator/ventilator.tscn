@@ -140,7 +140,7 @@ script = ExtResource("1_pc43h")
 reach = 9
 
 [node name="RotorPivot" type="Node3D" parent="." unique_id=1191971095]
-transform = Transform3D(0.9444927, 0.3285309, 0, -0.3285309, 0.9444927, 0, 0, 0, 1, 0, 1.536701, 0)
+transform = Transform3D(-0.93084246, 0.3654195, 0, -0.3654195, -0.93084246, 0, 0, 0, 1, 0, 1.536701, 0)
 
 [node name="Rotor" type="MeshInstance3D" parent="RotorPivot" unique_id=2087513930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0524, 0)
@@ -178,6 +178,7 @@ wait_time = 0.2
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=457531005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 stream = ExtResource("4_h01k5")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
