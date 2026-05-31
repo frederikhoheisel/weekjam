@@ -14,6 +14,10 @@ extends CharacterBody3D
 var wiggle_tween: Tween
 
 
+func _ready() -> void:
+	GameManager.level_completed.connect(hide_sterni)
+
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_up"):
 		animate(0)
@@ -69,10 +73,11 @@ func animate(id: int) -> void:
 	
 	wiggle_tween.tween_property(self, "rotation", Vector3(0.0, 0.0, 0.0), wiggle_time)\
 		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-	
+
+
 func show_sterni():
 	await get_tree().create_timer(0.8).timeout
 	$sterni.visible = true
-	
+
 func hide_sterni():
 	$sterni.visible = false

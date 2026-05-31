@@ -18,8 +18,9 @@ signal blow_drone(dir: Vector3, block_dist: int)
 signal drone_moved(dir: Vector3)
 
 var current_level: Node = null
-var current_level_id: int = 30
+var current_level_id: int = 0
 
+var remaining_moves: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,3 +44,5 @@ func load_level() -> void:
 	self.add_child.call_deferred(current_level)
 	#get_tree().current_scene = current_level
 	level_started.emit(current_level_id)
+	if current_level_id == 8:
+		current_level.last_level()
