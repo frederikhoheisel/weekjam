@@ -44,7 +44,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 var tween: Tween
+var rotating: bool = false
 func rotate_drone() -> void:
+	if rotating: return
+	rotating = true
 	if tween:
 		tween.kill()
 	
